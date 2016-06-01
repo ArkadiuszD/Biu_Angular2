@@ -40,7 +40,7 @@ var AddDetailComponent = (function () {
     AddDetailComponent = __decorate([
         core_1.Component({
             selector: 'add-gist-detail',
-            template: "\n\t<div *ngIf=\"book\">\n    <h2>[{{book.title}}], kategoria: {{book.kategoria}}, cena: {{book.price}}</h2>\n    <div>\n        <label>Title: </label>\n        <input [(ngModel)]=\"book.title\" placeholder=\"title\" required/>\n        <label>Author: </label>\n        <input [(ngModel)]=\"book.kategoria\" placeholder=\"kategoria\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"book.price\" placeholder=\"price\" required/>\n        <br><button (click)=\"save()\">CONFIRM</button>\n      </div>\n\t</div>\n\n\t"
+            template: "\n\t<div *ngIf=\"book\">\n    <h2>[{{book.opis}}], kategoria: {{book.kategoria}}, cena: {{book.price}}</h2>\n    <div>\n        <label>Title: </label>\n        <input [(ngModel)]=\"book.opis\" placeholder=\"opis\" required/>\n        <label>Author: </label>\n        <input [(ngModel)]=\"book.kategoria\" placeholder=\"kategoria\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"book.price\" placeholder=\"price\" required/>\n        <br><button (click)=\"save()\">CONFIRM</button>\n      </div>\n\t</div>\n\n\t"
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
     ], AddDetailComponent);

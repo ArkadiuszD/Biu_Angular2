@@ -1,6 +1,6 @@
 export class Gist {
 	id: number;
-	title: string;
+	opis: string;
 	kategoria: string;
 	price: string;
 }

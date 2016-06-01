@@ -13,7 +13,7 @@ import 'rxjs/Rx';
 	<input type='text' [(ngModel)]="filterValue" value="Homer">
 	<ul class="gist-list">
 		<li *ngFor="let book of books | sortByName:filterValue; let i=index">
-			<span class="gist-list-element">{{i + 1}} : <b>"{{book.title}}"</b>, by: {{book.kategoria}}</span>
+			<span class="gist-list-element">{{i + 1}} : <b>"{{book.opis}}"</b>, by: {{book.kategoria}}</span>
 		</li>
 	</ul>
 	<hr>
