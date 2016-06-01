@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Gist } from './gist';
-import { BookService } from './gist.service'
+import { GistService } from './gist.service'
 import { RouteParams } from '@angular/router-deprecated';
 
 @Component({
@@ -28,7 +28,7 @@ export class BookDetailComponent {
   navigated = false;
 
   constructor(
-    private bookService: BookService,
+    private bookService: GistService,
     private routeParams: RouteParams) {
   }
   save() {

@@ -21,7 +21,7 @@ var SortByNamePipe = (function () {
         if (value == null) {
             return null;
         }
-        return value.filter(function (book) { return new RegExp(queryString).test(book.author); });
+        return value.filter(function (gist) { return new RegExp(queryString).test(gist.author); });
     };
     SortByNamePipe = __decorate([
         core_1.Pipe({

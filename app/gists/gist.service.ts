@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import { Gist } from './gist';
 
 @Injectable()
-export class BookService {
+export class GistService {
 	private booksUrl = '../database/books';
 	constructor(private http: Http) { }
 	getBooks(): Promise<Gist[]> {

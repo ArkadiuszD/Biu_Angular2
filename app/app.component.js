@@ -27,11 +27,11 @@ var AppComponent = (function () {
             directives: [router_deprecated_1.ROUTER_DIRECTIVES, welcome_page_component_1.WelcomePageComponent],
             providers: [
                 router_deprecated_1.ROUTER_PROVIDERS,
-                gist_service_1.BookService
+                gist_service_1.GistService
             ]
         }),
         router_deprecated_1.RouteConfig([
-            { path: '/gists', name: 'Books', component: gist_component_1.BooksComponent },
+            { path: '/gists', name: 'Books', component: gist_component_1.GistsComponent },
             { path: '/welcome-page', name: 'WelcomePage', component: welcome_page_component_1.WelcomePageComponent,
                 useAsDefault: true },
             { path: '/edit-gist', name: 'EditBook', component: edit_gist_component_1.EditBookComponent },

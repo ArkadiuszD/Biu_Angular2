@@ -42,7 +42,7 @@ var BookDetailComponent = (function () {
             selector: 'my-gist-detail',
             template: "\n\t<div *ngIf=\"gist\">\n\t\t<h2>[{{gist.title}}], written by: {{gist.author}}</h2>\n\t\t<div>\n\t\t    <label>Title: </label>\n\t\t    <input [(ngModel)]=\"gist.title\" placeholder=\"title\" required/>\n\t\t    <label>Author: </label>\n\t\t    <input [(ngModel)]=\"gist.author\" placeholder=\"author\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"gist.price\" placeholder=\"price\"/>\n\t\t</div>\n\t</div>\n\n\t"
         }), 
-        __metadata('design:paramtypes', [gist_service_1.BookService, router_deprecated_1.RouteParams])
+        __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
     ], BookDetailComponent);
     return BookDetailComponent;
 }());
