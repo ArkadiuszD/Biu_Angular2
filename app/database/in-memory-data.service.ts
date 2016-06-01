@@ -1,8 +1,8 @@
-import { Gist } from '../gists/gist';
+import { Gist } from '../books/book';
 
 export class InMemoryDataService {
 	createDb() {
-		let gists = [
+		let books = [
 
             { "title": "Paliwo", "author": "Eksplatacja", "price": "150" },
             { "title": "Klocki Hamulcowe", "author": "Układ Hamulcowy", "price": "240" },
@@ -13,6 +13,6 @@ export class InMemoryDataService {
 		
 		];
 
-		return {gists};
+		return {books};
 	}
 }

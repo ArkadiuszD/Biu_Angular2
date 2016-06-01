@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { GistService } from './gists/gist.service';
-import { GistsComponent } from './gists/gist.component';
-import { EditBookComponent } from './gists/edit-gist.component';
+import { BookService } from './books/gist.service';
+import { BooksComponent } from './books/gist.component';
+import { EditBookComponent } from './books/edit-gist.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { WelcomePageComponent } from './welcome-page.component';
 import { ContactComponent } from './contact.component';
@@ -27,12 +27,12 @@ import { HTTP_PROVIDERS } from '@angular/http';
     directives: [ROUTER_DIRECTIVES, WelcomePageComponent],
     providers: [
         ROUTER_PROVIDERS,
-        GistService
+        BookService
     ]
 })
 
     @RouteConfig([
-    {        path: '/gists',        name: 'Books',        component: GistsComponent    },
+    {        path: '/books',        name: 'Books',        component: BooksComponent    },
     {        path: '/welcome-page',        name: 'WelcomePage',        component: WelcomePageComponent,
         useAsDefault: true    },
     {        path: '/edit-gist',        name: 'EditBook',        component: EditBookComponent    },

@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import 'rxjs/Rx';
-import {Gist} from '../gists/Gist';
+import {Gist} from '../books/book';
 
 @Pipe({
     name: 'sortByName',
@@ -17,6 +17,6 @@ export class SortByNamePipe {
         if (value == null) {
             return null;
         }
-        return value.filter((gist) => new RegExp(queryString).test(gist.author))
+        return value.filter((book) => new RegExp(queryString).test(book.author))
     }
 }

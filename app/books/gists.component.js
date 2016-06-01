@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var gist_service_1 = require('./gist.service');
+var book_service_1 = require('./book.service');
 var pipe_1 = require('../pipes/pipe');
 require('rxjs/Rx');
 var BooksComponent = (function () {
@@ -29,9 +29,9 @@ var BooksComponent = (function () {
             template: "\n\t<h2>Full list of avaible books:</h2>\n\t<label>Search by author:  </label>\n\t<input type='text' [(ngModel)]=\"filterValue\" value=\"Homer\">\n\t<ul class=\"book-list\">\n\t\t<li *ngFor=\"let book of books | sortByName:filterValue; let i=index\">\n\t\t\t<span class=\"book-list-element\">{{i + 1}} : <b>\"{{book.title}}\"</b>, by: {{book.author}}</span>\n\t\t</li>\n\t</ul>\n\t<hr>\n\t",
             pipes: [pipe_1.SortByNamePipe]
         }), 
-        __metadata('design:paramtypes', [gist_service_1.BookService])
+        __metadata('design:paramtypes', [book_service_1.BookService])
     ], BooksComponent);
     return BooksComponent;
 }());
 exports.BooksComponent = BooksComponent;
-//# sourceMappingURL=gist.component.js.map
+//# sourceMappingURL=gists.component.js.map
