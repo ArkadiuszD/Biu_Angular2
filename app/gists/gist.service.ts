@@ -4,14 +4,14 @@ import 'rxjs/add/operator/toPromise';
 import { Gist } from './gist';
 
 @Injectable()
-export class BookService {
+export class GistService {
 	private booksUrl = '../database/books';
 	constructor(private http: Http) { }
-	getBooks(): Promise<Gist[]> {
+	getGists(): Promise<Gist[]> {
     return this.http.get(this.booksUrl).toPromise().then(response => response.json().data).catch(this.handleError);
   }
 	getBook(id: any) {
-    return this.getBooks()
+    return this.getGists()
                .then(books => books.filter(book => book.id === id)[0]);
   }
   save(book: Gist): Promise<Gist>  {

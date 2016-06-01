@@ -12,16 +12,16 @@ var core_1 = require('@angular/core');
 var gist_1 = require('./gist');
 var gist_service_1 = require('./gist.service');
 var router_deprecated_1 = require('@angular/router-deprecated');
-var BookDetailComponent = (function () {
-    function BookDetailComponent(bookService, routeParams) {
-        this.bookService = bookService;
+var GistDetailComponent = (function () {
+    function GistDetailComponent(GistService, routeParams) {
+        this.GistService = GistService;
         this.routeParams = routeParams;
         this.close = new core_1.EventEmitter();
         this.navigated = false;
     }
-    BookDetailComponent.prototype.save = function () {
+    GistDetailComponent.prototype.save = function () {
         var _this = this;
-        this.bookService
+        this.GistService
             .save(this.book)
             .then(function (book) {
             _this.book = book;
@@ -32,19 +32,19 @@ var BookDetailComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', gist_1.Gist)
-    ], BookDetailComponent.prototype, "book", void 0);
+    ], GistDetailComponent.prototype, "book", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
-    ], BookDetailComponent.prototype, "close", void 0);
-    BookDetailComponent = __decorate([
+    ], GistDetailComponent.prototype, "close", void 0);
+    GistDetailComponent = __decorate([
         core_1.Component({
             selector: 'my-gist-detail',
             template: "\n\t<div *ngIf=\"book\">\n\t\t<h2>[{{book.title}}], written by: {{book.author}}</h2>\n\t\t<div>\n\t\t    <label>Title: </label>\n\t\t    <input [(ngModel)]=\"book.title\" placeholder=\"title\" required/>\n\t\t    <label>Author: </label>\n\t\t    <input [(ngModel)]=\"book.author\" placeholder=\"author\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"book.price\" placeholder=\"price\"/>\n\t\t</div>\n\t</div>\n\n\t"
         }), 
-        __metadata('design:paramtypes', [gist_service_1.BookService, router_deprecated_1.RouteParams])
-    ], BookDetailComponent);
-    return BookDetailComponent;
+        __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
+    ], GistDetailComponent);
+    return GistDetailComponent;
 }());
-exports.BookDetailComponent = BookDetailComponent;
+exports.GistDetailComponent = GistDetailComponent;
 //# sourceMappingURL=gist-detail.component.js.map

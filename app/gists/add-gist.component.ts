@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Gist } from './gist';
-import { BookService } from './gist.service'
+import { GistService } from './gist.service'
 import { RouteParams } from '@angular/router-deprecated';
 
 @Component({
@@ -29,11 +29,11 @@ export class AddDetailComponent {
     navigated = false;
 
     constructor(
-        private bookService: BookService,
+        private GistService: GistService,
         private routeParams: RouteParams) {
     }
     save() {
-        this.bookService
+        this.GistService
             .save(this.book)
             .then(book => {
                 this.book = book;

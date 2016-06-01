@@ -13,57 +13,57 @@ var gist_1 = require('./gist');
 var gist_detail_component_1 = require('./gist-detail.component');
 var gist_service_1 = require('./gist.service');
 var add_gist_component_1 = require('./add-gist.component');
-var EditBookComponent = (function () {
-    function EditBookComponent(bookService) {
-        this.bookService = bookService;
+var EditGistComponent = (function () {
+    function EditGistComponent(GistService) {
+        this.GistService = GistService;
         this.addingBook = false;
         this.edittingBook = false;
     }
-    EditBookComponent.prototype.getBooks = function () {
+    EditGistComponent.prototype.getGists = function () {
         var _this = this;
-        this.bookService.getBooks().then(function (books) { return _this.books = books; });
+        this.GistService.getGists().then(function (books) { return _this.books = books; });
     };
-    EditBookComponent.prototype.ngOnInit = function () {
-        this.getBooks();
+    EditGistComponent.prototype.ngOnInit = function () {
+        this.getGists();
     };
-    EditBookComponent.prototype.addBook = function () {
+    EditGistComponent.prototype.addBook = function () {
         this.edittingBook = false;
         this.addingBook = true;
-        this.selectedBook = new gist_1.Gist();
+        this.selectedGist = new gist_1.Gist();
     };
-    EditBookComponent.prototype.close = function (message) {
-        this.getBooks();
+    EditGistComponent.prototype.close = function (message) {
+        this.getGists();
     };
-    EditBookComponent.prototype.delete = function (book, event) {
+    EditGistComponent.prototype.delete = function (book, event) {
         var _this = this;
-        this.bookService
+        this.GistService
             .delete(book)
             .then(function (res) {
             _this.books = _this.books.filter(function (b) { return b !== book; });
-            if (_this.selectedBook === book) {
-                _this.selectedBook = null;
+            if (_this.selectedGist === book) {
+                _this.selectedGist = null;
             }
         })
             .catch(function (error) { return _this.error = error; });
     };
-    EditBookComponent.prototype.onSelect = function (book) {
-        this.selectedBook = book;
+    EditGistComponent.prototype.onSelect = function (book) {
+        this.selectedGist = book;
         this.addingBook = false;
         this.edittingBook = true;
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], EditBookComponent.prototype, "message", void 0);
-    EditBookComponent = __decorate([
+    ], EditGistComponent.prototype, "message", void 0);
+    EditGistComponent = __decorate([
         core_1.Component({
             selector: 'edit-gist',
-            template: "\n\t\t<table class=\"edit-view-table\">\n\t\t<tr>\n\t\t\t<td width=\"50%\">\n\t\t\t\t<ul class=\"book-list\">\n\t\t\t\t\t<li *ngFor=\"let book of books\" (click)=\"onSelect(book)\"\n\t\t\t\t\t\t[class.selected]=\"book === selectedBook\">\n\t\t\t\t\t\t<button class=\"delete-button\" (click)=\"delete(book, $event)\">Remove</button>\n\t\t\t\t\t\t<span class=\"book-list-element\"><b>\"{{book.title}}\"</b>, by: {{book.author}}, {{book.price}}</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t\t<button (click)=\"addBook()\">New</button>\n\t\t\t\t<button (click)=\"getBooks()\">Refresh list</button>\n\n\t\t\t</td>\n\t\t\t<td width=\"50%\">\n\t\t\t\t<div *ngIf=\"addingBook\">\n\t\t\t\t\t<h2><b>\"Fill new book's info\":</b></h2>\n\t\t\t\t\t<add-gist-detail [book]=\"selectedBook\"></add-gist-detail>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"edittingBook\">\n\t\t\t\t\t<h2><b>Fast edition for:</b></h2>\n\t\t\t\t\t<my-gist-detail [book]=\"selectedBook\"></my-gist-detail> \n\t\t\t\t</div>\t\t\t\n\t\t\t</td> \n\t\t</tr>\n\t\t</table>\n\t",
-            directives: [gist_detail_component_1.BookDetailComponent, add_gist_component_1.AddDetailComponent]
+            template: "\n\t\t<table class=\"edit-view-table\">\n\t\t<tr>\n\t\t\t<td width=\"50%\">\n\t\t\t\t<ul class=\"gist-list\">\n\t\t\t\t\t<li *ngFor=\"let book of books\" (click)=\"onSelect(book)\"\n\t\t\t\t\t\t[class.selected]=\"book === selectedGist\">\n\t\t\t\t\t\t<button class=\"delete-button\" (click)=\"delete(book, $event)\">Remove</button>\n\t\t\t\t\t\t<span class=\"gist-list-element\"><b>\"{{book.title}}\"</b>, by: {{book.author}}, {{book.price}}</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t\t<button (click)=\"addBook()\">New</button>\n\t\t\t\t<button (click)=\"getGists()\">Refresh list</button>\n\n\t\t\t</td>\n\t\t\t<td width=\"50%\">\n\t\t\t\t<div *ngIf=\"addingBook\">\n\t\t\t\t\t<h2><b>\"Fill new book's info\":</b></h2>\n\t\t\t\t\t<add-gist-detail [book]=\"selectedGist\"></add-gist-detail>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"edittingBook\">\n\t\t\t\t\t<h2><b>Fast edition for:</b></h2>\n\t\t\t\t\t<my-gist-detail [book]=\"selectedGist\"></my-gist-detail> \n\t\t\t\t</div>\t\t\t\n\t\t\t</td> \n\t\t</tr>\n\t\t</table>\n\t",
+            directives: [gist_detail_component_1.GistDetailComponent, add_gist_component_1.AddDetailComponent]
         }), 
-        __metadata('design:paramtypes', [gist_service_1.BookService])
-    ], EditBookComponent);
-    return EditBookComponent;
+        __metadata('design:paramtypes', [gist_service_1.GistService])
+    ], EditGistComponent);
+    return EditGistComponent;
 }());
-exports.EditBookComponent = EditBookComponent;
+exports.EditGistComponent = EditGistComponent;
 //# sourceMappingURL=edit-gist.component.js.map

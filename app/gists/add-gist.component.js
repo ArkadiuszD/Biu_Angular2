@@ -13,15 +13,15 @@ var gist_1 = require('./gist');
 var gist_service_1 = require('./gist.service');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var AddDetailComponent = (function () {
-    function AddDetailComponent(bookService, routeParams) {
-        this.bookService = bookService;
+    function AddDetailComponent(GistService, routeParams) {
+        this.GistService = GistService;
         this.routeParams = routeParams;
         this.close = new core_1.EventEmitter();
         this.navigated = false;
     }
     AddDetailComponent.prototype.save = function () {
         var _this = this;
-        this.bookService
+        this.GistService
             .save(this.book)
             .then(function (book) {
             _this.book = book;
@@ -42,7 +42,7 @@ var AddDetailComponent = (function () {
             selector: 'add-gist-detail',
             template: "\n\t<div *ngIf=\"book\">\n    <h2>[{{book.title}}], kategoria: {{book.author}}, cena: {{book.price}}</h2>\n    <div>\n        <label>Title: </label>\n        <input [(ngModel)]=\"book.title\" placeholder=\"title\" required/>\n        <label>Author: </label>\n        <input [(ngModel)]=\"book.author\" placeholder=\"author\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"book.price\" placeholder=\"price\" required/>\n        <br><button (click)=\"save()\">CONFIRM</button>\n      </div>\n\t</div>\n\n\t"
         }), 
-        __metadata('design:paramtypes', [gist_service_1.BookService, router_deprecated_1.RouteParams])
+        __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
     ], AddDetailComponent);
     return AddDetailComponent;
 }());

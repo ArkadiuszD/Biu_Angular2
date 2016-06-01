@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { BookService } from './gists/gist.service';
-import { BooksComponent } from './gists/gist.component';
-import { EditBookComponent } from './gists/edit-gist.component';
+import { GistService } from './gists/gist.service';
+import { GistComponent } from './gists/gist.component';
+import { EditGistComponent } from './gists/edit-gist.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { WelcomePageComponent } from './welcome-page.component';
 import { ContactComponent } from './contact.component';
@@ -16,8 +16,8 @@ import { HTTP_PROVIDERS } from '@angular/http';
     <h1>{{title}}</h1>
     <nav>
     <a [routerLink]="['WelcomePage']">Strona Główna</a>
-    <a [routerLink]="['Books']">Pokaż Wszystkie</a>
-    <a [routerLink]="['EditBook']">Dodaj/Usuń/Edytuj</a>
+    <a [routerLink]="['Gists']">Pokaż Wszystkie</a>
+    <a [routerLink]="['EditGist']">Dodaj/Usuń/Edytuj</a>
     <a [routerLink]="['Contact']">Kontakt</a>
     </nav>
     <hr>
@@ -27,17 +27,16 @@ import { HTTP_PROVIDERS } from '@angular/http';
     directives: [ROUTER_DIRECTIVES, WelcomePageComponent],
     providers: [
         ROUTER_PROVIDERS,
-        BookService
+        GistService
     ]
 })
 
     @RouteConfig([
-    {        path: '/books',        name: 'Books',        component: BooksComponent    },
-    {        path: '/welcome-page',        name: 'WelcomePage',        component: WelcomePageComponent,
-        useAsDefault: true    },
-    {        path: '/edit-gist',        name: 'EditBook',        component: EditBookComponent    },
-    {        path: '/contact',        name: 'Contact',        component: ContactComponent    }
-    ])
+    {        path: '/books',                name: 'Gists',              component: GistComponent    },
+    {        path: '/welcome-page',         name: 'WelcomePage',        component: WelcomePageComponent,    useAsDefault: true    },
+    {        path: '/edit-gist',            name: 'EditGist',           component: EditGistComponent    },
+    {        path: '/contact',              name: 'Contact',            component: ContactComponent    }
+    ])  
 
 export class AppComponent {
     title = 'Spis wydatków na samochód';

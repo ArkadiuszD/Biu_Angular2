@@ -11,25 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var BookService = (function () {
-    function BookService(http) {
+var GistService = (function () {
+    function GistService(http) {
         this.http = http;
         this.booksUrl = '../database/books';
     }
-    BookService.prototype.getBooks = function () {
+    GistService.prototype.getGists = function () {
         return this.http.get(this.booksUrl).toPromise().then(function (response) { return response.json().data; }).catch(this.handleError);
     };
-    BookService.prototype.getBook = function (id) {
-        return this.getBooks()
+    GistService.prototype.getBook = function (id) {
+        return this.getGists()
             .then(function (books) { return books.filter(function (book) { return book.id === id; })[0]; });
     };
-    BookService.prototype.save = function (book) {
+    GistService.prototype.save = function (book) {
         if (book.id) {
             return this.put(book);
         }
         return this.post(book);
     };
-    BookService.prototype.delete = function (book) {
+    GistService.prototype.delete = function (book) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         var url = this.booksUrl + "/" + book.id;
@@ -38,7 +38,7 @@ var BookService = (function () {
             .toPromise()
             .catch(this.handleError);
     };
-    BookService.prototype.post = function (book) {
+    GistService.prototype.post = function (book) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http
             .post(this.booksUrl, JSON.stringify(book), { headers: headers })
@@ -46,7 +46,7 @@ var BookService = (function () {
             .then(function (res) { return res.json().data; })
             .catch(this.handleError);
     };
-    BookService.prototype.put = function (book) {
+    GistService.prototype.put = function (book) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         var url = this.booksUrl + "/" + book.id;
@@ -56,15 +56,15 @@ var BookService = (function () {
             .then(function () { return book; })
             .catch(this.handleError);
     };
-    BookService.prototype.handleError = function (error) {
+    GistService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
-    BookService = __decorate([
+    GistService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], BookService);
-    return BookService;
+    ], GistService);
+    return GistService;
 }());
-exports.BookService = BookService;
+exports.GistService = GistService;
 //# sourceMappingURL=gist.service.js.map
