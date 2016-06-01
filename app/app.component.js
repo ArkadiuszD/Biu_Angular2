@@ -9,9 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var gist_service_1 = require('./books/gist.service');
-var gist_component_1 = require('./books/gist.component');
-var edit_gist_component_1 = require('./books/edit-gist.component');
+var gist_service_1 = require('./gists/gist.service');
+var gist_component_1 = require('./gists/gist.component');
+var edit_gist_component_1 = require('./gists/edit-gist.component');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var welcome_page_component_1 = require('./welcome-page.component');
 var contact_component_1 = require('./contact.component');

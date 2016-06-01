@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import 'rxjs/Rx';
-import {Gist} from '../books/book';
+import {Gist} from '../gists/book';
 
 @Pipe({
     name: 'sortByName',

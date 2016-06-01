@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { BookService } from './books/gist.service';
-import { BooksComponent } from './books/gist.component';
-import { EditBookComponent } from './books/edit-gist.component';
+import { BookService } from './gists/gist.service';
+import { BooksComponent } from './gists/gist.component';
+import { EditBookComponent } from './gists/edit-gist.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { WelcomePageComponent } from './welcome-page.component';
 import { ContactComponent } from './contact.component';
