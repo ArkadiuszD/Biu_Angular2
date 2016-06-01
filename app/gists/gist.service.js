@@ -21,39 +21,39 @@ var BookService = (function () {
     };
     BookService.prototype.getBook = function (id) {
         return this.getBooks()
-            .then(function (books) { return books.filter(function (book) { return book.id === id; })[0]; });
+            .then(function (books) { return books.filter(function (gist) { return gist.id === id; })[0]; });
     };
-    BookService.prototype.save = function (book) {
-        if (book.id) {
-            return this.put(book);
+    BookService.prototype.save = function (gist) {
+        if (gist.id) {
+            return this.put(gist);
         }
-        return this.post(book);
+        return this.post(gist);
     };
-    BookService.prototype.delete = function (book) {
+    BookService.prototype.delete = function (gist) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        var url = this.booksUrl + "/" + book.id;
+        var url = this.booksUrl + "/" + gist.id;
         return this.http
             .delete(url, headers)
             .toPromise()
             .catch(this.handleError);
     };
-    BookService.prototype.post = function (book) {
+    BookService.prototype.post = function (gist) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http
-            .post(this.booksUrl, JSON.stringify(book), { headers: headers })
+            .post(this.booksUrl, JSON.stringify(gist), { headers: headers })
             .toPromise()
             .then(function (res) { return res.json().data; })
             .catch(this.handleError);
     };
-    BookService.prototype.put = function (book) {
+    BookService.prototype.put = function (gist) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        var url = this.booksUrl + "/" + book.id;
+        var url = this.booksUrl + "/" + gist.id;
         return this.http
-            .put(url, JSON.stringify(book), { headers: headers })
+            .put(url, JSON.stringify(gist), { headers: headers })
             .toPromise()
-            .then(function () { return book; })
+            .then(function () { return gist; })
             .catch(this.handleError);
     };
     BookService.prototype.handleError = function (error) {

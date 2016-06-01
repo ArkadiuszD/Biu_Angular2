@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Book } from './gist';
+import { Gist } from './gist';
 import { BookDetailComponent } from './gist-detail.component';
 import { BookService } from './gist.service';
 import { AddDetailComponent } from './add-gist.component';
@@ -11,11 +11,11 @@ import { AddDetailComponent } from './add-gist.component';
 		<table class="edit-view-table">
 		<tr>
 			<td width="50%">
-				<ul class="book-list">
-					<li *ngFor="let book of books" (click)="onSelect(book)"
-						[class.selected]="book === selectedBook">
-						<button class="delete-button" (click)="delete(book, $event)">Remove</button>
-						<span class="book-list-element"><b>"{{book.title}}"</b>, by: {{book.author}}, {{book.price}}</span>
+				<ul class="gist-list">
+					<li *ngFor="let gist of books" (click)="onSelect(gist)"
+						[class.selected]="gist === selectedBook">
+						<button class="delete-button" (click)="delete(gist, $event)">Remove</button>
+						<span class="gist-list-element"><b>"{{gist.title}}"</b>, by: {{gist.author}}, {{gist.price}}</span>
 					</li>
 				</ul>
 				<button (click)="addBook()">New</button>
@@ -24,12 +24,12 @@ import { AddDetailComponent } from './add-gist.component';
 			</td>
 			<td width="50%">
 				<div *ngIf="addingBook">
-					<h2><b>"Fill new book's info":</b></h2>
-					<add-gist-detail [book]="selectedBook"></add-gist-detail>
+					<h2><b>"Fill new gist's info":</b></h2>
+					<add-gist-detail [gist]="selectedBook"></add-gist-detail>
 				</div>
 				<div *ngIf="edittingBook">
 					<h2><b>Fast edition for:</b></h2>
-					<my-gist-detail [book]="selectedBook"></my-gist-detail> 
+					<my-gist-detail [gist]="selectedBook"></my-gist-detail> 
 				</div>			
 			</td> 
 		</tr>
@@ -41,8 +41,8 @@ import { AddDetailComponent } from './add-gist.component';
 
 export class EditBookComponent implements OnInit {
 	@Input() message: String;
-	books: Book[];
-	selectedBook: Book;
+	books: Gist[];
+	selectedBook: Gist;
 	addingBook = false;
 	edittingBook = false;
 	error: any;
@@ -56,22 +56,22 @@ export class EditBookComponent implements OnInit {
 	addBook() {
 		this.edittingBook = false;
 	    this.addingBook = true;
-	    this.selectedBook = new Book();
+	    this.selectedBook = new Gist();
 	}
 	close(message) {
 		this.getBooks();
 	}
-	delete(book: Book, event: any) {
+	delete(gist: Gist, event: any) {
 		this.bookService
-		    .delete(book)
+		    .delete(gist)
 		    .then(res => {
-		      this.books = this.books.filter(b => b !== book);
-		      if (this.selectedBook === book) { this.selectedBook = null; }
+		      this.books = this.books.filter(b => b !== gist);
+		      if (this.selectedBook === gist) { this.selectedBook = null; }
 		    })
 		    .catch(error => this.error = error);
 	}
-	onSelect(book: Book) { 
-		this.selectedBook = book;
+	onSelect(gist: Gist) { 
+		this.selectedBook = gist;
 		this.addingBook = false;
 		this.edittingBook = true;
 	}

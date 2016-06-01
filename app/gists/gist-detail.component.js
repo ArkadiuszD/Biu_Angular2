@@ -22,17 +22,17 @@ var BookDetailComponent = (function () {
     BookDetailComponent.prototype.save = function () {
         var _this = this;
         this.bookService
-            .save(this.book)
-            .then(function (book) {
-            _this.book = book;
+            .save(this.gist)
+            .then(function (gist) {
+            _this.gist = gist;
             _this.close.emit(null);
         })
             .catch(function (error) { return _this.error = error; });
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', gist_1.Book)
-    ], BookDetailComponent.prototype, "book", void 0);
+        __metadata('design:type', gist_1.Gist)
+    ], BookDetailComponent.prototype, "gist", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
@@ -40,7 +40,7 @@ var BookDetailComponent = (function () {
     BookDetailComponent = __decorate([
         core_1.Component({
             selector: 'my-gist-detail',
-            template: "\n\t<div *ngIf=\"book\">\n\t\t<h2>[{{book.title}}], written by: {{book.author}}</h2>\n\t\t<div>\n\t\t    <label>Title: </label>\n\t\t    <input [(ngModel)]=\"book.title\" placeholder=\"title\" required/>\n\t\t    <label>Author: </label>\n\t\t    <input [(ngModel)]=\"book.author\" placeholder=\"author\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"book.price\" placeholder=\"price\"/>\n\t\t</div>\n\t</div>\n\n\t"
+            template: "\n\t<div *ngIf=\"gist\">\n\t\t<h2>[{{gist.title}}], written by: {{gist.author}}</h2>\n\t\t<div>\n\t\t    <label>Title: </label>\n\t\t    <input [(ngModel)]=\"gist.title\" placeholder=\"title\" required/>\n\t\t    <label>Author: </label>\n\t\t    <input [(ngModel)]=\"gist.author\" placeholder=\"author\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"gist.price\" placeholder=\"price\"/>\n\t\t</div>\n\t</div>\n\n\t"
         }), 
         __metadata('design:paramtypes', [gist_service_1.BookService, router_deprecated_1.RouteParams])
     ], BookDetailComponent);

@@ -1,8 +1,8 @@
 "use strict";
-var Book = (function () {
-    function Book() {
+var Gist = (function () {
+    function Gist() {
     }
-    return Book;
+    return Gist;
 }());
-exports.Book = Book;
+exports.Gist = Gist;
 //# sourceMappingURL=gist.js.map

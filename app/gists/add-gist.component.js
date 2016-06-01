@@ -22,17 +22,17 @@ var AddDetailComponent = (function () {
     AddDetailComponent.prototype.save = function () {
         var _this = this;
         this.bookService
-            .save(this.book)
-            .then(function (book) {
-            _this.book = book;
+            .save(this.gist)
+            .then(function (gist) {
+            _this.gist = gist;
         })
             .catch(function (error) { return _this.error = error; });
         this.close.emit("testujemy");
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', gist_1.Book)
-    ], AddDetailComponent.prototype, "book", void 0);
+        __metadata('design:type', gist_1.Gist)
+    ], AddDetailComponent.prototype, "gist", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
@@ -40,7 +40,7 @@ var AddDetailComponent = (function () {
     AddDetailComponent = __decorate([
         core_1.Component({
             selector: 'add-gist-detail',
-            template: "\n\t<div *ngIf=\"book\">\n    <h2>[{{book.title}}], kategoria: {{book.author}}, cena: {{book.price}}</h2>\n    <div>\n        <label>Title: </label>\n        <input [(ngModel)]=\"book.title\" placeholder=\"title\" required/>\n        <label>Author: </label>\n        <input [(ngModel)]=\"book.author\" placeholder=\"author\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"book.price\" placeholder=\"price\" required/>\n        <br><button (click)=\"save()\">CONFIRM</button>\n      </div>\n\t</div>\n\n\t"
+            template: "\n\t<div *ngIf=\"gist\">\n    <h2>[{{gist.title}}], kategoria: {{gist.author}}, cena: {{gist.price}}</h2>\n    <div>\n        <label>Title: </label>\n        <input [(ngModel)]=\"gist.title\" placeholder=\"title\" required/>\n        <label>Author: </label>\n        <input [(ngModel)]=\"gist.author\" placeholder=\"author\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"gist.price\" placeholder=\"price\" required/>\n        <br><button (click)=\"save()\">CONFIRM</button>\n      </div>\n\t</div>\n\n\t"
         }), 
         __metadata('design:paramtypes', [gist_service_1.BookService, router_deprecated_1.RouteParams])
     ], AddDetailComponent);

@@ -29,25 +29,25 @@ var EditBookComponent = (function () {
     EditBookComponent.prototype.addBook = function () {
         this.edittingBook = false;
         this.addingBook = true;
-        this.selectedBook = new gist_1.Book();
+        this.selectedBook = new gist_1.Gist();
     };
     EditBookComponent.prototype.close = function (message) {
         this.getBooks();
     };
-    EditBookComponent.prototype.delete = function (book, event) {
+    EditBookComponent.prototype.delete = function (gist, event) {
         var _this = this;
         this.bookService
-            .delete(book)
+            .delete(gist)
             .then(function (res) {
-            _this.books = _this.books.filter(function (b) { return b !== book; });
-            if (_this.selectedBook === book) {
+            _this.books = _this.books.filter(function (b) { return b !== gist; });
+            if (_this.selectedBook === gist) {
                 _this.selectedBook = null;
             }
         })
             .catch(function (error) { return _this.error = error; });
     };
-    EditBookComponent.prototype.onSelect = function (book) {
-        this.selectedBook = book;
+    EditBookComponent.prototype.onSelect = function (gist) {
+        this.selectedBook = gist;
         this.addingBook = false;
         this.edittingBook = true;
     };
@@ -58,7 +58,7 @@ var EditBookComponent = (function () {
     EditBookComponent = __decorate([
         core_1.Component({
             selector: 'edit-gist',
-            template: "\n\t\t<table class=\"edit-view-table\">\n\t\t<tr>\n\t\t\t<td width=\"50%\">\n\t\t\t\t<ul class=\"book-list\">\n\t\t\t\t\t<li *ngFor=\"let book of books\" (click)=\"onSelect(book)\"\n\t\t\t\t\t\t[class.selected]=\"book === selectedBook\">\n\t\t\t\t\t\t<button class=\"delete-button\" (click)=\"delete(book, $event)\">Remove</button>\n\t\t\t\t\t\t<span class=\"book-list-element\"><b>\"{{book.title}}\"</b>, by: {{book.author}}, {{book.price}}</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t\t<button (click)=\"addBook()\">New</button>\n\t\t\t\t<button (click)=\"getBooks()\">Refresh list</button>\n\n\t\t\t</td>\n\t\t\t<td width=\"50%\">\n\t\t\t\t<div *ngIf=\"addingBook\">\n\t\t\t\t\t<h2><b>\"Fill new book's info\":</b></h2>\n\t\t\t\t\t<add-gist-detail [book]=\"selectedBook\"></add-gist-detail>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"edittingBook\">\n\t\t\t\t\t<h2><b>Fast edition for:</b></h2>\n\t\t\t\t\t<my-gist-detail [book]=\"selectedBook\"></my-gist-detail> \n\t\t\t\t</div>\t\t\t\n\t\t\t</td> \n\t\t</tr>\n\t\t</table>\n\t",
+            template: "\n\t\t<table class=\"edit-view-table\">\n\t\t<tr>\n\t\t\t<td width=\"50%\">\n\t\t\t\t<ul class=\"gist-list\">\n\t\t\t\t\t<li *ngFor=\"let gist of books\" (click)=\"onSelect(gist)\"\n\t\t\t\t\t\t[class.selected]=\"gist === selectedBook\">\n\t\t\t\t\t\t<button class=\"delete-button\" (click)=\"delete(gist, $event)\">Remove</button>\n\t\t\t\t\t\t<span class=\"gist-list-element\"><b>\"{{gist.title}}\"</b>, by: {{gist.author}}, {{gist.price}}</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t\t<button (click)=\"addBook()\">New</button>\n\t\t\t\t<button (click)=\"getBooks()\">Refresh list</button>\n\n\t\t\t</td>\n\t\t\t<td width=\"50%\">\n\t\t\t\t<div *ngIf=\"addingBook\">\n\t\t\t\t\t<h2><b>\"Fill new gist's info\":</b></h2>\n\t\t\t\t\t<add-gist-detail [gist]=\"selectedBook\"></add-gist-detail>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"edittingBook\">\n\t\t\t\t\t<h2><b>Fast edition for:</b></h2>\n\t\t\t\t\t<my-gist-detail [gist]=\"selectedBook\"></my-gist-detail> \n\t\t\t\t</div>\t\t\t\n\t\t\t</td> \n\t\t</tr>\n\t\t</table>\n\t",
             directives: [gist_detail_component_1.BookDetailComponent, add_gist_component_1.AddDetailComponent]
         }), 
         __metadata('design:paramtypes', [gist_service_1.BookService])
