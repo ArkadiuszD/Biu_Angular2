@@ -14,12 +14,13 @@ import { HTTP_PROVIDERS } from '@angular/http';
 
     template: `
     <h1>{{title}}</h1>
-    <nav>
+<nav id="horz"> 
     <a [routerLink]="['WelcomePage']">Strona Główna</a>
     <a [routerLink]="['Gists']">Pokaż Wszystkie</a>
     <a [routerLink]="['EditGist']">Dodaj/Usuń/Edytuj</a>
-    <a [routerLink]="['Contact']">Kontakt</a>
-    </nav>
+    <a [routerLink]="['Contact']">Kontakt</a> 
+</nav>
+
     <hr>
     <router-outlet></router-outlet>
     `,

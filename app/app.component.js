@@ -23,7 +23,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <nav>\n    <a [routerLink]=\"['WelcomePage']\">Strona G\u0142\u00F3wna</a>\n    <a [routerLink]=\"['Gists']\">Poka\u017C Wszystkie</a>\n    <a [routerLink]=\"['EditGist']\">Dodaj/Usu\u0144/Edytuj</a>\n    <a [routerLink]=\"['Contact']\">Kontakt</a>\n    </nav>\n    <hr>\n    <router-outlet></router-outlet>\n    ",
+            template: "\n    <h1>{{title}}</h1>\n<nav id=\"horz\"> \n    <a [routerLink]=\"['WelcomePage']\">Strona G\u0142\u00F3wna</a>\n    <a [routerLink]=\"['Gists']\">Poka\u017C Wszystkie</a>\n    <a [routerLink]=\"['EditGist']\">Dodaj/Usu\u0144/Edytuj</a>\n    <a [routerLink]=\"['Contact']\">Kontakt</a> \n</nav>\n\n    <hr>\n    <router-outlet></router-outlet>\n    ",
             directives: [router_deprecated_1.ROUTER_DIRECTIVES, welcome_page_component_1.WelcomePageComponent],
             providers: [
                 router_deprecated_1.ROUTER_PROVIDERS,
