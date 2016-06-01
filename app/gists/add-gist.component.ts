@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Gist } from './book';
+import { Gist } from './gist';
 import { BookService } from './gist.service'
 import { RouteParams } from '@angular/router-deprecated';
 

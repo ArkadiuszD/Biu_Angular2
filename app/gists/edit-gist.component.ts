@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Gist } from './book';
+import { Gist } from './gist';
 import { BookDetailComponent } from './gist-detail.component';
 import { BookService } from './gist.service';
 import { AddDetailComponent } from './add-gist.component';

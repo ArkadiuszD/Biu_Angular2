@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var book_1 = require('./book');
+var gist_1 = require('./gist');
 var gist_detail_component_1 = require('./gist-detail.component');
 var gist_service_1 = require('./gist.service');
 var add_gist_component_1 = require('./add-gist.component');
@@ -29,7 +29,7 @@ var EditBookComponent = (function () {
     EditBookComponent.prototype.addBook = function () {
         this.edittingBook = false;
         this.addingBook = true;
-        this.selectedBook = new book_1.Gist();
+        this.selectedBook = new gist_1.Gist();
     };
     EditBookComponent.prototype.close = function (message) {
         this.getBooks();
