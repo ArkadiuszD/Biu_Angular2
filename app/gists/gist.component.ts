@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Gist } from './gist';
-import { BookService } from './gist.service';
+import { GistService } from './gist.service';
 import { SortByNamePipe } from '../pipes/pipe';
 import 'rxjs/Rx';
 
@@ -22,10 +22,10 @@ import 'rxjs/Rx';
 	pipes: [SortByNamePipe]
 })
 
-export class BooksComponent implements OnInit {
+export class GistsComponent implements OnInit {
 	filterValue: String;
 	books: Gist[];
-	constructor(private bookService: BookService) { }
+	constructor(private bookService: GistService) { }
 	getBooks() {
 		this.bookService.getBooks().then(books => this.books = books);
 	}
