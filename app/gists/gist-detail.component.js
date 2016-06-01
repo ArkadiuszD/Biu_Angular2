@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var book_1 = require('./book');
+var gist_1 = require('./gist');
 var gist_service_1 = require('./gist.service');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var BookDetailComponent = (function () {
@@ -31,7 +31,7 @@ var BookDetailComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', book_1.Book)
+        __metadata('design:type', gist_1.Book)
     ], BookDetailComponent.prototype, "book", void 0);
     __decorate([
         core_1.Output(), 

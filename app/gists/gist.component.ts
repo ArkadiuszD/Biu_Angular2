@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from './book';
+import { Book } from './gist';
 import { BookService } from './gist.service';
 import { SortByNamePipe } from '../pipes/pipe';
 import 'rxjs/Rx';

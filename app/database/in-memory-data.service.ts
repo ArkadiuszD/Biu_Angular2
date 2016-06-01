@@ -1,4 +1,4 @@
-import { Book } from '../books/book';
+import { Book } from '../books/gist';
 
 export class InMemoryDataService {
 	createDb() {

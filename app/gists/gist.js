@@ -5,4 +5,4 @@ var Book = (function () {
     return Book;
 }());
 exports.Book = Book;
-//# sourceMappingURL=book.js.map
+//# sourceMappingURL=gist.js.map
