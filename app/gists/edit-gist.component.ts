@@ -15,7 +15,7 @@ import { AddDetailComponent } from './add-gist.component';
 					<li *ngFor="let book of books" (click)="onSelect(book)"
 						[class.selected]="book === selectedGist">
 						<button class="delete-button" (click)="delete(book, $event)">Remove</button>
-						<span class="gist-list-element"><b>"{{book.title}}"</b>, by: {{book.author}}, {{book.price}}</span>
+						<span class="gist-list-element"><b>"{{book.title}}"</b>, by: {{book.kategoria}}, {{book.price}}</span>
 					</li>
 				</ul>
 				<button (click)="addBook()">New</button>

@@ -7,12 +7,12 @@ import { RouteParams } from '@angular/router-deprecated';
 	selector: 'my-gist-detail',
 	template: `
 	<div *ngIf="book">
-		<h2>[{{book.title}}], written by: {{book.author}}</h2>
+		<h2>[{{book.title}}], written by: {{book.kategoria}}</h2>
 		<div>
 		    <label>Title: </label>
 		    <input [(ngModel)]="book.title" placeholder="title" required/>
 		    <label>Author: </label>
-		    <input [(ngModel)]="book.author" placeholder="author" required/>
+		    <input [(ngModel)]="book.kategoria" placeholder="kategoria" required/>
         <label>Price: </label>
         <input [(ngModel)]="book.price" placeholder="price"/>
 		</div>

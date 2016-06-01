@@ -9,11 +9,11 @@ import 'rxjs/Rx';
 
 	template: `
 	<h2>Full list of avaible books:</h2>
-	<label>Search by author:  </label>
+	<label>Search by kategoria:  </label>
 	<input type='text' [(ngModel)]="filterValue" value="Homer">
 	<ul class="gist-list">
 		<li *ngFor="let book of books | sortByName:filterValue; let i=index">
-			<span class="gist-list-element">{{i + 1}} : <b>"{{book.title}}"</b>, by: {{book.author}}</span>
+			<span class="gist-list-element">{{i + 1}} : <b>"{{book.title}}"</b>, by: {{book.kategoria}}</span>
 		</li>
 	</ul>
 	<hr>
