@@ -26,7 +26,7 @@ var GistComponent = (function () {
     GistComponent = __decorate([
         core_1.Component({
             selector: 'my-books',
-            template: "\n\t\t<form class=\"searchform cf\">\n\t\t\n\t<input type='text' [(ngModel)]=\"filterValue\" value=\"Homer\" placeholder=\"Szukaj\">\n\t</form>\n\t<ul class=\"gist-list\">\n\t\t<li *ngFor=\"let book of books | sortByName:filterValue; let i=index\">\n\t\t\t<a class=\"gist-list-element\">{{i + 1}} : <h2> {{book.opis}},</h2><p> {{book.kategoria}}</p> <p>{{book.price}}.z\u0142</p></a>\n\t\t</li>\n\t</ul>\n\t<hr>\n\n\t",
+            template: "\n\t\t<form class=\"searchform cf\">\n\t\t\n\t<input type='text' [(ngModel)]=\"filterValue\" value=\"Homer\" placeholder=\"Szukaj\">\n\t</form>\n\t<ul class=\"gist-list\">\n\t\t<li *ngFor=\"let book of books | sortByName:filterValue; let i=index\">\n\t\t\t<a class=\"gist-list-element\"><h2> {{book.kategoria}},</h2><p> {{book.opis}}</p> <p>{{book.price}}.z\u0142</p> <p>{{book.data}}</p></a>\n\t\t</li>\n\t</ul>\n\t<hr>\n\n\t",
             pipes: [pipe_1.SortByNamePipe]
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService])

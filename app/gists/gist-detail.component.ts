@@ -10,9 +10,10 @@ import { RouteParams } from '@angular/router-deprecated';
 
   <form id="form" class="topBefore">
     
-      <input id="name" type="text" [(ngModel)]="book.opis" placeholder="NAME">
-      <input id="email" type="text" [(ngModel)]="book.kategoria" placeholder="E-MAIL">
-      <input id="price" type="text" [(ngModel)]="book.price" placeholder="E-MAIL">
+      <input id="opis" type="text" [(ngModel)]="book.opis" placeholder="Opis">
+      <input id="kategoria" type="text" [(ngModel)]="book.kategoria" placeholder="Kategoria">
+      <input id="price" type="text" [(ngModel)]="book.price" placeholder="Cena">
+      <input id="data" type="date" [(ngModel)]="book.data" placeholder="Data">
 </form>
 	</div>
 

@@ -3,4 +3,5 @@ export class Gist {
 	opis: string;
 	kategoria: string;
 	price: string;
+	Data: Date
 }

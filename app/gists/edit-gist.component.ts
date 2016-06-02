@@ -8,6 +8,16 @@ import { AddDetailComponent } from './add-gist.component';
 	selector: 'edit-gist',
 
 	template: `
+
+	 <nav id="horz" class="navBarEdit"> 
+   		 <a>
+   		 <button (click)="addBook()">Dodaj </button>
+   		 </a>
+   		 <a>
+   		 <button (click)="getGists()">Odśwież</button>
+   		 </a>
+
+	</nav>
 		<table class="edit-view-table">
 		<tr>
 			<td width="70%">
@@ -15,12 +25,11 @@ import { AddDetailComponent } from './add-gist.component';
 					<li *ngFor="let book of books" (click)="onSelect(book)"
 						[class.selected]="book === selectedGist">
 						
-						<a class="gist-list-element"><h2> {{book.opis}},</h2><p> {{book.kategoria}}</p> <p>{{book.price}}.zł</p>
+						<a class="gist-list-element"><h2> {{book.kategoria}},</h2><p> {{book.opis}}</p> <p>{{book.price}}.zł</p><p>{{book.data}}</p>
 						<button class="delete-button" (click)="delete(book, $event)">Usuń</button></a>
 					</li>
 				</ul>
-				<button (click)="addBook()">Dodaj </button>
-				<button (click)="getGists()">Odśwież</button>
+				
 
 			</td>
 			<td width="30%">
