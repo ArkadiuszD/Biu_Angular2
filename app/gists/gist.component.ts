@@ -10,7 +10,7 @@ import 'rxjs/Rx';
 	template: `
 		<form class="searchform cf">
 		
-	<input type='text' [(ngModel)]="filterValue" value="Homer" placeholder="Szukaj">
+	<input type='text' [(ngModel)]="filterValue"  placeholder="Szukaj">
 	</form>
 	<ul class="gist-list">
 		<li *ngFor="let gist of gists | sortByName:filterValue; let i=index">

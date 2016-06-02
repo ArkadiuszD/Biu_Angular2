@@ -1,6 +1,4 @@
-###Aplikacja do wpisywania notatek dotyczących pojazdu.
-<br \>
+#Aplikacja do wpisywania notatek dotyczących pojazdu.
 ##Install 
-# npm install </p>
-<br \>
-#npm start </p>
+### npm install </p>
+###npm start </p>
