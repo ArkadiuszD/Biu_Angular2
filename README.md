@@ -1,6 +1,6 @@
-<h3>Aplikacja do wpisywania notatek dotyczących pojazdu.</h3>
+###Aplikacja do wpisywania notatek dotyczących pojazdu.
 <br \>
-<h3> Install </h3>
-<p> npm install </p>
+##Install 
+# npm install </p>
 <br \>
-<p> npm start </p>
+#npm start </p>
