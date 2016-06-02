@@ -8,10 +8,6 @@ import {Gist} from '../gists/gist';
 })
 
 export class SortByNamePipe {
-    //transform(items: any[], args: any[]): any {
-    //if (!items || !items.length) { return; }
-    // filter items array, items which match and return true will be kept, false will be filtered out
-    // return items.filter(item => item.kategoria.indexOf(args[0].kategoria) !== -1);
     
     transform(value: any[], queryString: any) {
         if (value == null) {

@@ -10,26 +10,24 @@ import { AddDetailComponent } from './add-gist.component';
 	template: `
 		<table class="edit-view-table">
 		<tr>
-			<td width="50%">
+			<td width="70%">
 				<ul class="gist-list">
 					<li *ngFor="let book of books" (click)="onSelect(book)"
 						[class.selected]="book === selectedGist">
 						
-						<a class="gist-list-element">{{i + 1}} : <h2> {{book.opis}},</h2><p> {{book.kategoria}}</p> <p>{{book.price}}.zł</p>
-						<button class="delete-button" (click)="delete(book, $event)">Remove</button></a>
+						<a class="gist-list-element"><h2> {{book.opis}},</h2><p> {{book.kategoria}}</p> <p>{{book.price}}.zł</p>
+						<button class="delete-button" (click)="delete(book, $event)">Usuń</button></a>
 					</li>
 				</ul>
-				<button (click)="addBook()">New</button>
-				<button (click)="getGists()">Refresh list</button>
+				<button (click)="addBook()">Dodaj </button>
+				<button (click)="getGists()">Odśwież</button>
 
 			</td>
-			<td width="50%">
+			<td width="30%">
 				<div *ngIf="addingBook">
-					<h2><b>"Fill new book's info":</b></h2>
 					<add-gist-detail [book]="selectedGist"></add-gist-detail>
 				</div>
 				<div *ngIf="edittingBook">
-					<h2><b>Fast edition for:</b></h2>
 					<my-gist-detail [book]="selectedGist"></my-gist-detail> 
 				</div>			
 			</td> 

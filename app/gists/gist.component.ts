@@ -8,15 +8,17 @@ import 'rxjs/Rx';
 	selector: 'my-books',
 
 	template: `
-	<h2>Full list of avaible books:</h2>
-	<label>Search by kategoria:  </label>
-	<input type='text' [(ngModel)]="filterValue" value="Homer">
+		<form class="searchform cf">
+		
+	<input type='text' [(ngModel)]="filterValue" value="Homer" placeholder="Szukaj">
+	</form>
 	<ul class="gist-list">
 		<li *ngFor="let book of books | sortByName:filterValue; let i=index">
 			<a class="gist-list-element">{{i + 1}} : <h2> {{book.opis}},</h2><p> {{book.kategoria}}</p> <p>{{book.price}}.zł</p></a>
 		</li>
 	</ul>
 	<hr>
+
 	`,
 
 	pipes: [SortByNamePipe]

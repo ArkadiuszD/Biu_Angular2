@@ -40,5 +40,5 @@ import { HTTP_PROVIDERS } from '@angular/http';
     ])  
 
 export class AppComponent {
-    title = 'Spis wydatków na samochód';
+    title = '[BiU]-Angular2';
 }

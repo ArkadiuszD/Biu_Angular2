@@ -18,7 +18,7 @@ var contact_component_1 = require('./contact.component');
 require('rxjs/Rx');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Spis wydatków na samochód';
+        this.title = '[BiU]-Angular2';
     }
     AppComponent = __decorate([
         core_1.Component({

@@ -13,10 +13,6 @@ require('rxjs/Rx');
 var SortByNamePipe = (function () {
     function SortByNamePipe() {
     }
-    //transform(items: any[], args: any[]): any {
-    //if (!items || !items.length) { return; }
-    // filter items array, items which match and return true will be kept, false will be filtered out
-    // return items.filter(item => item.kategoria.indexOf(args[0].kategoria) !== -1);
     SortByNamePipe.prototype.transform = function (value, queryString) {
         if (value == null) {
             return null;

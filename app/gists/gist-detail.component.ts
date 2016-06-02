@@ -7,15 +7,13 @@ import { RouteParams } from '@angular/router-deprecated';
 	selector: 'my-gist-detail',
 	template: `
 	<div *ngIf="book">
-		<h2>[{{book.opis}}],  {{book.kategoria}}, cena: {{book.price}}</h2>
-		<div>
-		    <label>Title: </label>
-		    <input [(ngModel)]="book.opis" placeholder="opis" required/>
-		    <label>Author: </label>
-		    <input [(ngModel)]="book.kategoria" placeholder="kategoria" required/>
-        <label>Price: </label>
-        <input [(ngModel)]="book.price" placeholder="price"/>
-		</div>
+
+  <form id="form" class="topBefore">
+    
+      <input id="name" type="text" [(ngModel)]="book.opis" placeholder="NAME">
+      <input id="email" type="text" [(ngModel)]="book.kategoria" placeholder="E-MAIL">
+      <input id="price" type="text" [(ngModel)]="book.price" placeholder="E-MAIL">
+</form>
 	</div>
 
 	`

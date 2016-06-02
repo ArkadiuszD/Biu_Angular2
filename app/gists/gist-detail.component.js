@@ -40,7 +40,7 @@ var GistDetailComponent = (function () {
     GistDetailComponent = __decorate([
         core_1.Component({
             selector: 'my-gist-detail',
-            template: "\n\t<div *ngIf=\"book\">\n\t\t<h2>[{{book.opis}}],  {{book.kategoria}}, cena: {{book.price}}</h2>\n\t\t<div>\n\t\t    <label>Title: </label>\n\t\t    <input [(ngModel)]=\"book.opis\" placeholder=\"opis\" required/>\n\t\t    <label>Author: </label>\n\t\t    <input [(ngModel)]=\"book.kategoria\" placeholder=\"kategoria\" required/>\n        <label>Price: </label>\n        <input [(ngModel)]=\"book.price\" placeholder=\"price\"/>\n\t\t</div>\n\t</div>\n\n\t"
+            template: "\n\t<div *ngIf=\"book\">\n\n  <form id=\"form\" class=\"topBefore\">\n    \n      <input id=\"name\" type=\"text\" [(ngModel)]=\"book.opis\" placeholder=\"NAME\">\n      <input id=\"email\" type=\"text\" [(ngModel)]=\"book.kategoria\" placeholder=\"E-MAIL\">\n      <input id=\"price\" type=\"text\" [(ngModel)]=\"book.price\" placeholder=\"E-MAIL\">\n</form>\n\t</div>\n\n\t"
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
     ], GistDetailComponent);
