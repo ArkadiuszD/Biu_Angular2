@@ -3,7 +3,7 @@ var InMemoryDataService = (function () {
     function InMemoryDataService() {
     }
     InMemoryDataService.prototype.createDb = function () {
-        var books = [
+        var gists = [
             { "opis": "Paliwo", "kategoria": "Eksplatacja", "price": "150" },
             { "opis": "Klocki Hamulcowe", "kategoria": "Układ Hamulcowy", "price": "240" },
             { "opis": "Sprzęgło", "kategoria": "Napęd", "price": "78" },
@@ -35,7 +35,7 @@ var InMemoryDataService = (function () {
             { "opis": "Paliwo", "kategoria": "Eskplatacja", "price": "180" },
             { "opis": "Paliwo", "kategoria": "Eksplatacja", "price": "100" }
         ];
-        return { books: books };
+        return { gists: gists };
     };
     return InMemoryDataService;
 }());

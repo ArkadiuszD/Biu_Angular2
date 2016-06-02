@@ -6,18 +6,18 @@ import { RouteParams } from '@angular/router-deprecated';
 @Component({
     selector: 'add-gist-detail',
     template: `
-	<div *ngIf="book">
+	<div *ngIf="gist">
     <div>
 
         <form #Form="ngForm" id="form" class="topBefore">
        
-        <input [(ngModel)]="book.opis" placeholder="opis" required maxlength="40"/><br>
+        <input [(ngModel)]="gist.opis" placeholder="opis" required maxlength="40"/><br>
       
-        <input [(ngModel)]="book.kategoria" placeholder="kategoria" required maxlength="20"/><br>
+        <input [(ngModel)]="gist.kategoria"  placeholder="kategoria" required maxlength="20"/><br>
      
-        <input  [(ngModel)]="book.price" placeholder="price" required/><br>
+        <input  [(ngModel)]="gist.price" type="number" min="0.01" step="0.01" max="2500" placeholder="price" required/><br>
         
-        <input type="date"  [(ngModel)]="book.data" placeholder="Data" required/><br>
+        <input type="date"  [(ngModel)]="gist.data" placeholder="Data" required/><br>
         <br><button (click)="save()">CONFIRM</button>
         </form>
 
@@ -30,7 +30,7 @@ import { RouteParams } from '@angular/router-deprecated';
 })
 
 export class AddDetailComponent {
-    @Input() book: Gist;
+    @Input() gist: Gist;
     @Output() close = new EventEmitter();
     error: any;
     navigated = false;
@@ -41,9 +41,9 @@ export class AddDetailComponent {
     }
     save() {
         this.GistService
-            .save(this.book)
-            .then(book => {
-                this.book = book;
+            .save(this.gist)
+            .then(gist => {
+                this.gist = gist;
             })
             .catch(error => this.error = error);
         this.close.emit("testujemy");

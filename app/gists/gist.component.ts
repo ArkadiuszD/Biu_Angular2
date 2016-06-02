@@ -5,7 +5,7 @@ import { SortByNamePipe } from '../pipes/pipe';
 import 'rxjs/Rx';
 
 @Component({
-	selector: 'my-books',
+	selector: 'my-gists',
 
 	template: `
 		<form class="searchform cf">
@@ -13,8 +13,8 @@ import 'rxjs/Rx';
 	<input type='text' [(ngModel)]="filterValue" value="Homer" placeholder="Szukaj">
 	</form>
 	<ul class="gist-list">
-		<li *ngFor="let book of books | sortByName:filterValue; let i=index">
-			<a class="gist-list-element"><h2> {{book.kategoria}},</h2><p> {{book.opis}}</p> <p>{{book.price}}.zł</p> <p>{{book.data}}</p></a>
+		<li *ngFor="let gist of gists | sortByName:filterValue; let i=index">
+			<a class="gist-list-element"><h2> {{gist.kategoria}},</h2><p> {{gist.opis}}</p> <p>{{gist.price}}.zł</p> <p>{{gist.data}}</p></a>
 		</li>
 	</ul>
 	<hr>
@@ -26,10 +26,10 @@ import 'rxjs/Rx';
 
 export class GistComponent implements OnInit {
 	filterValue: String;
-	books: Gist[];
+	gists: Gist[];
 	constructor(private GistService: GistService) { }
 	getGists() {
-		this.GistService.getGists().then(books => this.books = books);
+		this.GistService.getGists().then(gists => this.gists = gists);
 	}
 	ngOnInit() {
 		this.getGists();

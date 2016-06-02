@@ -22,9 +22,9 @@ var AddDetailComponent = (function () {
     AddDetailComponent.prototype.save = function () {
         var _this = this;
         this.GistService
-            .save(this.book)
-            .then(function (book) {
-            _this.book = book;
+            .save(this.gist)
+            .then(function (gist) {
+            _this.gist = gist;
         })
             .catch(function (error) { return _this.error = error; });
         this.close.emit("testujemy");
@@ -32,7 +32,7 @@ var AddDetailComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', gist_1.Gist)
-    ], AddDetailComponent.prototype, "book", void 0);
+    ], AddDetailComponent.prototype, "gist", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
@@ -40,7 +40,7 @@ var AddDetailComponent = (function () {
     AddDetailComponent = __decorate([
         core_1.Component({
             selector: 'add-gist-detail',
-            template: "\n\t<div *ngIf=\"book\">\n    <div>\n\n        <form #Form=\"ngForm\" id=\"form\" class=\"topBefore\">\n       \n        <input [(ngModel)]=\"book.opis\" placeholder=\"opis\" required maxlength=\"40\"/><br>\n      \n        <input [(ngModel)]=\"book.kategoria\" placeholder=\"kategoria\" required maxlength=\"20\"/><br>\n     \n        <input  [(ngModel)]=\"book.price\" placeholder=\"price\" required/><br>\n        \n        <input type=\"date\"  [(ngModel)]=\"book.data\" placeholder=\"Data\" required/><br>\n        <br><button (click)=\"save()\">CONFIRM</button>\n        </form>\n\n\n\n      </div>\n\t</div>\n\n\t"
+            template: "\n\t<div *ngIf=\"gist\">\n    <div>\n\n        <form #Form=\"ngForm\" id=\"form\" class=\"topBefore\">\n       \n        <input [(ngModel)]=\"gist.opis\" placeholder=\"opis\" required maxlength=\"40\"/><br>\n      \n        <input [(ngModel)]=\"gist.kategoria\"  placeholder=\"kategoria\" required maxlength=\"20\"/><br>\n     \n        <input  [(ngModel)]=\"gist.price\" type=\"number\" min=\"0.01\" step=\"0.01\" max=\"2500\" placeholder=\"price\" required/><br>\n        \n        <input type=\"date\"  [(ngModel)]=\"gist.data\" placeholder=\"Data\" required/><br>\n        <br><button (click)=\"save()\">CONFIRM</button>\n        </form>\n\n\n\n      </div>\n\t</div>\n\n\t"
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
     ], AddDetailComponent);

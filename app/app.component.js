@@ -31,7 +31,7 @@ var AppComponent = (function () {
             ]
         }),
         router_deprecated_1.RouteConfig([
-            { path: '/books', name: 'Gists', component: gist_component_1.GistComponent },
+            { path: '/gists', name: 'Gists', component: gist_component_1.GistComponent },
             { path: '/welcome-page', name: 'WelcomePage', component: welcome_page_component_1.WelcomePageComponent, useAsDefault: true },
             { path: '/edit-gist', name: 'EditGist', component: edit_gist_component_1.EditGistComponent },
             { path: '/contact', name: 'Contact', component: contact_component_1.ContactComponent }

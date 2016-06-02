@@ -18,15 +18,15 @@ var GistComponent = (function () {
     }
     GistComponent.prototype.getGists = function () {
         var _this = this;
-        this.GistService.getGists().then(function (books) { return _this.books = books; });
+        this.GistService.getGists().then(function (gists) { return _this.gists = gists; });
     };
     GistComponent.prototype.ngOnInit = function () {
         this.getGists();
     };
     GistComponent = __decorate([
         core_1.Component({
-            selector: 'my-books',
-            template: "\n\t\t<form class=\"searchform cf\">\n\t\t\n\t<input type='text' [(ngModel)]=\"filterValue\" value=\"Homer\" placeholder=\"Szukaj\">\n\t</form>\n\t<ul class=\"gist-list\">\n\t\t<li *ngFor=\"let book of books | sortByName:filterValue; let i=index\">\n\t\t\t<a class=\"gist-list-element\"><h2> {{book.kategoria}},</h2><p> {{book.opis}}</p> <p>{{book.price}}.z\u0142</p> <p>{{book.data}}</p></a>\n\t\t</li>\n\t</ul>\n\t<hr>\n\n\t",
+            selector: 'my-gists',
+            template: "\n\t\t<form class=\"searchform cf\">\n\t\t\n\t<input type='text' [(ngModel)]=\"filterValue\" value=\"Homer\" placeholder=\"Szukaj\">\n\t</form>\n\t<ul class=\"gist-list\">\n\t\t<li *ngFor=\"let gist of gists | sortByName:filterValue; let i=index\">\n\t\t\t<a class=\"gist-list-element\"><h2> {{gist.kategoria}},</h2><p> {{gist.opis}}</p> <p>{{gist.price}}.z\u0142</p> <p>{{gist.data}}</p></a>\n\t\t</li>\n\t</ul>\n\t<hr>\n\n\t",
             pipes: [pipe_1.SortByNamePipe]
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService])

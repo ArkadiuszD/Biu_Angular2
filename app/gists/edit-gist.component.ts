@@ -11,7 +11,7 @@ import { AddDetailComponent } from './add-gist.component';
 
 	 <nav id="horz" class="navBarEdit"> 
    		 <a>
-   		 <button (click)="addBook()">Dodaj </button>
+   		 <button (click)="addGist()">Dodaj </button>
    		 </a>
    		 <a>
    		 <button (click)="getGists()">Odśwież</button>
@@ -22,22 +22,22 @@ import { AddDetailComponent } from './add-gist.component';
 		<tr>
 			<td width="70%">
 				<ul class="gist-list">
-					<li *ngFor="let book of books" (click)="onSelect(book)"
-						[class.selected]="book === selectedGist">
+					<li *ngFor="let gist of gists" (click)="onSelect(gist)"
+						[class.selected]="gist === selectedGist">
 						
-						<a class="gist-list-element"><h2> {{book.kategoria}},</h2><p> {{book.opis}}</p> <p>{{book.price}}.zł</p><p>{{book.data}}</p>
-						<button class="delete-button" (click)="delete(book, $event)">Usuń</button></a>
+						<a class="gist-list-element"><h2> {{gist.kategoria}},</h2><p> {{gist.opis}}</p> <p>{{gist.price}}.zł</p><p>{{gist.data}}</p>
+						<button class="delete-button" (click)="delete(gist, $event)">Usuń</button></a>
 					</li>
 				</ul>
 				
 
 			</td>
 			<td width="30%">
-				<div *ngIf="addingBook">
-					<add-gist-detail [book]="selectedGist"></add-gist-detail>
+				<div *ngIf="addingGist">
+					<add-gist-detail [gist]="selectedGist"></add-gist-detail>
 				</div>
-				<div *ngIf="edittingBook">
-					<my-gist-detail [book]="selectedGist"></my-gist-detail> 
+				<div *ngIf="edittingGist">
+					<my-gist-detail [gist]="selectedGist"></my-gist-detail> 
 				</div>			
 			</td> 
 		</tr>
@@ -49,39 +49,39 @@ import { AddDetailComponent } from './add-gist.component';
 
 export class EditGistComponent implements OnInit {
 	@Input() message: String;
-	books: Gist[];
+	gists: Gist[];
 	selectedGist: Gist;
-	addingBook = false;
-	edittingBook = false;
+	addingGist = false;
+	edittingGist = false;
 	error: any;
 	constructor(private GistService: GistService) { }
 	getGists() {
-		this.GistService.getGists().then(books => this.books = books);
+		this.GistService.getGists().then(gists => this.gists = gists);
 	}
 	ngOnInit() {
 		this.getGists();
 	}
-	addBook() {
-		this.edittingBook = false;
-	    this.addingBook = true;
+	addGist() {
+		this.edittingGist = false;
+	    this.addingGist = true;
 	    this.selectedGist = new Gist();
 	}
 	close(message) {
 		this.getGists();
 	}
-	delete(book: Gist, event: any) {
+	delete(gist: Gist, event: any) {
 		this.GistService
-		    .delete(book)
+		    .delete(gist)
 		    .then(res => {
-		      this.books = this.books.filter(b => b !== book);
-		      if (this.selectedGist === book) { this.selectedGist = null; }
+		      this.gists = this.gists.filter(b => b !== gist);
+		      if (this.selectedGist === gist) { this.selectedGist = null; }
 		    })
 		    .catch(error => this.error = error);
 	}
-	onSelect(book: Gist) { 
-		this.selectedGist = book;
-		this.addingBook = false;
-		this.edittingBook = true;
+	onSelect(gist: Gist) { 
+		this.selectedGist = gist;
+		this.addingGist = false;
+		this.edittingGist = true;
 	}
 }
 

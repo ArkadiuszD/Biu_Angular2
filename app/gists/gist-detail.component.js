@@ -22,9 +22,9 @@ var GistDetailComponent = (function () {
     GistDetailComponent.prototype.save = function () {
         var _this = this;
         this.GistService
-            .save(this.book)
-            .then(function (book) {
-            _this.book = book;
+            .save(this.gist)
+            .then(function (gist) {
+            _this.gist = gist;
             _this.close.emit(null);
         })
             .catch(function (error) { return _this.error = error; });
@@ -32,7 +32,7 @@ var GistDetailComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', gist_1.Gist)
-    ], GistDetailComponent.prototype, "book", void 0);
+    ], GistDetailComponent.prototype, "gist", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
@@ -40,7 +40,7 @@ var GistDetailComponent = (function () {
     GistDetailComponent = __decorate([
         core_1.Component({
             selector: 'my-gist-detail',
-            template: "\n\t<div *ngIf=\"book\">\n\n  <form id=\"form\" class=\"topBefore\">\n    \n      <input id=\"opis\" type=\"text\" [(ngModel)]=\"book.opis\" placeholder=\"Opis\">\n      <input id=\"kategoria\" type=\"text\" [(ngModel)]=\"book.kategoria\" placeholder=\"Kategoria\">\n      <input id=\"price\" type=\"text\" [(ngModel)]=\"book.price\" placeholder=\"Cena\">\n      <input id=\"data\" type=\"date\" [(ngModel)]=\"book.data\" placeholder=\"Data\">\n</form>\n\t</div>\n\n\t"
+            template: "\n\t<div *ngIf=\"gist\">\n\n  <form id=\"form\" class=\"topBefore\">\n    \n      <input id=\"opis\" type=\"text\" [(ngModel)]=\"gist.opis\" placeholder=\"Opis\">\n      <input id=\"kategoria\" type=\"text\" [(ngModel)]=\"gist.kategoria\" placeholder=\"Kategoria\">\n      <input id=\"price\" type=\"number\" min=\"0.01\" step=\"0.01\" max=\"5000\" [(ngModel)]=\"gist.price\" placeholder=\"Cena\">\n      <input id=\"data\" type=\"date\" [(ngModel)]=\"gist.data\" placeholder=\"Data\">\n</form>\n\t</div>\n\n\t"
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
     ], GistDetailComponent);

@@ -5,52 +5,52 @@ import { Gist } from './gist';
 
 @Injectable()
 export class GistService {
-	private booksUrl = '../database/books';
+	private gistsUrl = '../database/gists';
 	constructor(private http: Http) { }
 	getGists(): Promise<Gist[]> {
-    return this.http.get(this.booksUrl).toPromise().then(response => response.json().data).catch(this.handleError);
+    return this.http.get(this.gistsUrl).toPromise().then(response => response.json().data).catch(this.handleError);
   }
-	getBook(id: any) {
+	getGist(id: any) {
     return this.getGists()
-               .then(books => books.filter(book => book.id === id)[0]);
+               .then(gists => gists.filter(gist => gist.id === id)[0]);
   }
-  save(book: Gist): Promise<Gist>  {
-    if (book.id) {
-      return this.put(book);
+  save(gist: Gist): Promise<Gist>  {
+    if (gist.id) {
+      return this.put(gist);
     }
-    return this.post(book);
+    return this.post(gist);
   }
 
-  delete(book: Gist) {
+  delete(gist: Gist) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let url = `${this.booksUrl}/${book.id}`;
+    let url = `${this.gistsUrl}/${gist.id}`;
 
     return this.http
                .delete(url, headers)
                .toPromise()
                .catch(this.handleError);
   }
-  private post(book: Gist): Promise<Gist> {
+  private post(gist: Gist): Promise<Gist> {
     let headers = new Headers({'Content-Type': 'application/json'});
 
     return this.http
-               .post(this.booksUrl, JSON.stringify(book), {headers: headers})
+               .post(this.gistsUrl, JSON.stringify(gist), {headers: headers})
                .toPromise()
                .then(res => res.json().data)
                .catch(this.handleError);
   }
-  private put(book: Gist) {
+  private put(gist: Gist) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let url = `${this.booksUrl}/${book.id}`;
+    let url = `${this.gistsUrl}/${gist.id}`;
 
     return this.http
-               .put(url, JSON.stringify(book), {headers: headers})
+               .put(url, JSON.stringify(gist), {headers: headers})
                .toPromise()
-               .then(() => book)
+               .then(() => gist)
                .catch(this.handleError);
   }
   private handleError(error: any) {

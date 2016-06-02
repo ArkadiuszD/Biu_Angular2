@@ -2,7 +2,7 @@ import { Gist } from '../gists/gist';
 
 export class InMemoryDataService {
 	createDb() {
-		let books = [
+		let gists = [
 
             { "opis": "Paliwo", "kategoria": "Eksplatacja", "price": "150" },
             { "opis": "Klocki Hamulcowe", "kategoria": "Układ Hamulcowy", "price": "240" },
@@ -38,6 +38,6 @@ export class InMemoryDataService {
 		
 		];
 
-		return {books};
+		return {gists};
 	}
 }

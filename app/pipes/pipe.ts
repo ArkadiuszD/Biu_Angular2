@@ -13,6 +13,6 @@ export class SortByNamePipe {
         if (value == null) {
             return null;
         }
-        return value.filter((book) => new RegExp(queryString).test(book.kategoria))
+        return value.filter((gist) => new RegExp(queryString).test(gist.kategoria))
     }
 }

@@ -14,46 +14,46 @@ require('rxjs/add/operator/toPromise');
 var GistService = (function () {
     function GistService(http) {
         this.http = http;
-        this.booksUrl = '../database/books';
+        this.gistsUrl = '../database/gists';
     }
     GistService.prototype.getGists = function () {
-        return this.http.get(this.booksUrl).toPromise().then(function (response) { return response.json().data; }).catch(this.handleError);
+        return this.http.get(this.gistsUrl).toPromise().then(function (response) { return response.json().data; }).catch(this.handleError);
     };
-    GistService.prototype.getBook = function (id) {
+    GistService.prototype.getGist = function (id) {
         return this.getGists()
-            .then(function (books) { return books.filter(function (book) { return book.id === id; })[0]; });
+            .then(function (gists) { return gists.filter(function (gist) { return gist.id === id; })[0]; });
     };
-    GistService.prototype.save = function (book) {
-        if (book.id) {
-            return this.put(book);
+    GistService.prototype.save = function (gist) {
+        if (gist.id) {
+            return this.put(gist);
         }
-        return this.post(book);
+        return this.post(gist);
     };
-    GistService.prototype.delete = function (book) {
+    GistService.prototype.delete = function (gist) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        var url = this.booksUrl + "/" + book.id;
+        var url = this.gistsUrl + "/" + gist.id;
         return this.http
             .delete(url, headers)
             .toPromise()
             .catch(this.handleError);
     };
-    GistService.prototype.post = function (book) {
+    GistService.prototype.post = function (gist) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         return this.http
-            .post(this.booksUrl, JSON.stringify(book), { headers: headers })
+            .post(this.gistsUrl, JSON.stringify(gist), { headers: headers })
             .toPromise()
             .then(function (res) { return res.json().data; })
             .catch(this.handleError);
     };
-    GistService.prototype.put = function (book) {
+    GistService.prototype.put = function (gist) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        var url = this.booksUrl + "/" + book.id;
+        var url = this.gistsUrl + "/" + gist.id;
         return this.http
-            .put(url, JSON.stringify(book), { headers: headers })
+            .put(url, JSON.stringify(gist), { headers: headers })
             .toPromise()
-            .then(function () { return book; })
+            .then(function () { return gist; })
             .catch(this.handleError);
     };
     GistService.prototype.handleError = function (error) {

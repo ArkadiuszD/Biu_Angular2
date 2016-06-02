@@ -33,7 +33,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
 })
 
     @RouteConfig([
-    {        path: '/books',                name: 'Gists',              component: GistComponent    },
+    {        path: '/gists',                name: 'Gists',              component: GistComponent    },
     {        path: '/welcome-page',         name: 'WelcomePage',        component: WelcomePageComponent,    useAsDefault: true    },
     {        path: '/edit-gist',            name: 'EditGist',           component: EditGistComponent    },
     {        path: '/contact',              name: 'Contact',            component: ContactComponent    }

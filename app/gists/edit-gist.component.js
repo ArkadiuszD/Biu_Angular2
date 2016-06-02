@@ -16,40 +16,40 @@ var add_gist_component_1 = require('./add-gist.component');
 var EditGistComponent = (function () {
     function EditGistComponent(GistService) {
         this.GistService = GistService;
-        this.addingBook = false;
-        this.edittingBook = false;
+        this.addingGist = false;
+        this.edittingGist = false;
     }
     EditGistComponent.prototype.getGists = function () {
         var _this = this;
-        this.GistService.getGists().then(function (books) { return _this.books = books; });
+        this.GistService.getGists().then(function (gists) { return _this.gists = gists; });
     };
     EditGistComponent.prototype.ngOnInit = function () {
         this.getGists();
     };
-    EditGistComponent.prototype.addBook = function () {
-        this.edittingBook = false;
-        this.addingBook = true;
+    EditGistComponent.prototype.addGist = function () {
+        this.edittingGist = false;
+        this.addingGist = true;
         this.selectedGist = new gist_1.Gist();
     };
     EditGistComponent.prototype.close = function (message) {
         this.getGists();
     };
-    EditGistComponent.prototype.delete = function (book, event) {
+    EditGistComponent.prototype.delete = function (gist, event) {
         var _this = this;
         this.GistService
-            .delete(book)
+            .delete(gist)
             .then(function (res) {
-            _this.books = _this.books.filter(function (b) { return b !== book; });
-            if (_this.selectedGist === book) {
+            _this.gists = _this.gists.filter(function (b) { return b !== gist; });
+            if (_this.selectedGist === gist) {
                 _this.selectedGist = null;
             }
         })
             .catch(function (error) { return _this.error = error; });
     };
-    EditGistComponent.prototype.onSelect = function (book) {
-        this.selectedGist = book;
-        this.addingBook = false;
-        this.edittingBook = true;
+    EditGistComponent.prototype.onSelect = function (gist) {
+        this.selectedGist = gist;
+        this.addingGist = false;
+        this.edittingGist = true;
     };
     __decorate([
         core_1.Input(), 
@@ -58,7 +58,7 @@ var EditGistComponent = (function () {
     EditGistComponent = __decorate([
         core_1.Component({
             selector: 'edit-gist',
-            template: "\n\n\t <nav id=\"horz\" class=\"navBarEdit\"> \n   \t\t <a>\n   \t\t <button (click)=\"addBook()\">Dodaj </button>\n   \t\t </a>\n   \t\t <a>\n   \t\t <button (click)=\"getGists()\">Od\u015Bwie\u017C</button>\n   \t\t </a>\n\n\t</nav>\n\t\t<table class=\"edit-view-table\">\n\t\t<tr>\n\t\t\t<td width=\"70%\">\n\t\t\t\t<ul class=\"gist-list\">\n\t\t\t\t\t<li *ngFor=\"let book of books\" (click)=\"onSelect(book)\"\n\t\t\t\t\t\t[class.selected]=\"book === selectedGist\">\n\t\t\t\t\t\t\n\t\t\t\t\t\t<a class=\"gist-list-element\"><h2> {{book.kategoria}},</h2><p> {{book.opis}}</p> <p>{{book.price}}.z\u0142</p><p>{{book.data}}</p>\n\t\t\t\t\t\t<button class=\"delete-button\" (click)=\"delete(book, $event)\">Usu\u0144</button></a>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t\t\n\n\t\t\t</td>\n\t\t\t<td width=\"30%\">\n\t\t\t\t<div *ngIf=\"addingBook\">\n\t\t\t\t\t<add-gist-detail [book]=\"selectedGist\"></add-gist-detail>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"edittingBook\">\n\t\t\t\t\t<my-gist-detail [book]=\"selectedGist\"></my-gist-detail> \n\t\t\t\t</div>\t\t\t\n\t\t\t</td> \n\t\t</tr>\n\t\t</table>\n\t",
+            template: "\n\n\t <nav id=\"horz\" class=\"navBarEdit\"> \n   \t\t <a>\n   \t\t <button (click)=\"addGist()\">Dodaj </button>\n   \t\t </a>\n   \t\t <a>\n   \t\t <button (click)=\"getGists()\">Od\u015Bwie\u017C</button>\n   \t\t </a>\n\n\t</nav>\n\t\t<table class=\"edit-view-table\">\n\t\t<tr>\n\t\t\t<td width=\"70%\">\n\t\t\t\t<ul class=\"gist-list\">\n\t\t\t\t\t<li *ngFor=\"let gist of gists\" (click)=\"onSelect(gist)\"\n\t\t\t\t\t\t[class.selected]=\"gist === selectedGist\">\n\t\t\t\t\t\t\n\t\t\t\t\t\t<a class=\"gist-list-element\"><h2> {{gist.kategoria}},</h2><p> {{gist.opis}}</p> <p>{{gist.price}}.z\u0142</p><p>{{gist.data}}</p>\n\t\t\t\t\t\t<button class=\"delete-button\" (click)=\"delete(gist, $event)\">Usu\u0144</button></a>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t\t\n\n\t\t\t</td>\n\t\t\t<td width=\"30%\">\n\t\t\t\t<div *ngIf=\"addingGist\">\n\t\t\t\t\t<add-gist-detail [gist]=\"selectedGist\"></add-gist-detail>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"edittingGist\">\n\t\t\t\t\t<my-gist-detail [gist]=\"selectedGist\"></my-gist-detail> \n\t\t\t\t</div>\t\t\t\n\t\t\t</td> \n\t\t</tr>\n\t\t</table>\n\t",
             directives: [gist_detail_component_1.GistDetailComponent, add_gist_component_1.AddDetailComponent]
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService])
