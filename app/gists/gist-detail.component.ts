@@ -12,11 +12,12 @@ import { RouteParams } from '@angular/router-deprecated';
     
       <input id="opis" type="text" [(ngModel)]="gist.opis" placeholder="Opis">
       <input id="kategoria" type="text" [(ngModel)]="gist.kategoria" placeholder="Kategoria">
-      <input id="price" type="number" min="0.01" step="0.01" max="5000" [(ngModel)]="gist.price" placeholder="Cena">
+      <input id="price" type="number" min="0.01" step="10" max="25000" [(ngModel)]="gist.price" placeholder="Cena">
       <input id="data" type="date" [(ngModel)]="gist.data" placeholder="Data">
+       <button (click)="goBack()">Anuluj</button>
+       <button (click)="save()">Zapisz</button>
 </form>
- <button (click)="goBack()">Cancel</button>
-  <button (click)="save()">Confirm</button>
+
 	</div>
 
 	`

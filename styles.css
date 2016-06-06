@@ -353,3 +353,9 @@ input:hover::placeholder, textarea:hover::placeholder {
 input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
   color: #cbc6c1;
 }
+
+.ivalidInfo {
+   color: red;
+   font-size: 8pt;
+   font-family: verdana;
+ }

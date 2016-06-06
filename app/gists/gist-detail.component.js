@@ -60,7 +60,7 @@ var GistDetailComponent = (function () {
     GistDetailComponent = __decorate([
         core_1.Component({
             selector: 'my-gist-detail',
-            template: "\n\t<div *ngIf=\"gist\">\n\n  <form id=\"form\" class=\"topBefore\">\n    \n      <input id=\"opis\" type=\"text\" [(ngModel)]=\"gist.opis\" placeholder=\"Opis\">\n      <input id=\"kategoria\" type=\"text\" [(ngModel)]=\"gist.kategoria\" placeholder=\"Kategoria\">\n      <input id=\"price\" type=\"number\" min=\"0.01\" step=\"0.01\" max=\"5000\" [(ngModel)]=\"gist.price\" placeholder=\"Cena\">\n      <input id=\"data\" type=\"date\" [(ngModel)]=\"gist.data\" placeholder=\"Data\">\n</form>\n <button (click)=\"goBack()\">Cancel</button>\n  <button (click)=\"save()\">Confirm</button>\n\t</div>\n\n\t"
+            template: "\n\t<div *ngIf=\"gist\">\n\n  <form id=\"form\" class=\"topBefore\">\n    \n      <input id=\"opis\" type=\"text\" [(ngModel)]=\"gist.opis\" placeholder=\"Opis\">\n      <input id=\"kategoria\" type=\"text\" [(ngModel)]=\"gist.kategoria\" placeholder=\"Kategoria\">\n      <input id=\"price\" type=\"number\" min=\"0.01\" step=\"10\" max=\"25000\" [(ngModel)]=\"gist.price\" placeholder=\"Cena\">\n      <input id=\"data\" type=\"date\" [(ngModel)]=\"gist.data\" placeholder=\"Data\">\n       <button (click)=\"goBack()\">Anuluj</button>\n       <button (click)=\"save()\">Zapisz</button>\n</form>\n\n\t</div>\n\n\t"
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
     ], GistDetailComponent);
