@@ -18,7 +18,7 @@ import { RouteParams } from '@angular/router-deprecated';
         <input  [(ngModel)]="gist.price" type="number" min="0.01" step="0.01" max="2500" placeholder="price" required/><br>
         
         <input type="date"  [(ngModel)]="gist.data" placeholder="Data" required/><br>
-        <br><button (click)="save()">CONFIRM</button>
+        <br><button (click)="save()">Dodaj</button>
         </form>
 
 
@@ -46,6 +46,5 @@ export class AddDetailComponent {
                 this.gist = gist;
             })
             .catch(error => this.error = error);
-        this.close.emit("testujemy");
     }
 }

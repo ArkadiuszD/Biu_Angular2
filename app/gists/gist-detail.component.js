@@ -13,21 +13,41 @@ var gist_1 = require('./gist');
 var gist_service_1 = require('./gist.service');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var GistDetailComponent = (function () {
-    function GistDetailComponent(GistService, routeParams) {
-        this.GistService = GistService;
+    function GistDetailComponent(gistService, routeParams) {
+        this.gistService = gistService;
         this.routeParams = routeParams;
         this.close = new core_1.EventEmitter();
         this.navigated = false;
     }
     GistDetailComponent.prototype.save = function () {
         var _this = this;
-        this.GistService
+        this.gistService
             .save(this.gist)
             .then(function (gist) {
             _this.gist = gist;
-            _this.close.emit(null);
+            _this.goBack(gist);
         })
             .catch(function (error) { return _this.error = error; });
+    };
+    GistDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.routeParams.get('id') !== null) {
+            var id = +this.routeParams.get('id');
+            this.navigated = true;
+            this.gistService.getGist(id)
+                .then(function (gist) { return _this.gist = gist; });
+        }
+        else {
+            this.navigated = false;
+            this.gist = new gist_1.Gist();
+        }
+    };
+    GistDetailComponent.prototype.goBack = function (savedGist) {
+        if (savedGist === void 0) { savedGist = null; }
+        this.close.emit(savedGist);
+        if (this.navigated) {
+            window.history.back();
+        }
     };
     __decorate([
         core_1.Input(), 
@@ -40,7 +60,7 @@ var GistDetailComponent = (function () {
     GistDetailComponent = __decorate([
         core_1.Component({
             selector: 'my-gist-detail',
-            template: "\n\t<div *ngIf=\"gist\">\n\n  <form id=\"form\" class=\"topBefore\">\n    \n      <input id=\"opis\" type=\"text\" [(ngModel)]=\"gist.opis\" placeholder=\"Opis\">\n      <input id=\"kategoria\" type=\"text\" [(ngModel)]=\"gist.kategoria\" placeholder=\"Kategoria\">\n      <input id=\"price\" type=\"number\" min=\"0.01\" step=\"0.01\" max=\"5000\" [(ngModel)]=\"gist.price\" placeholder=\"Cena\">\n      <input id=\"data\" type=\"date\" [(ngModel)]=\"gist.data\" placeholder=\"Data\">\n</form>\n\t</div>\n\n\t"
+            template: "\n\t<div *ngIf=\"gist\">\n\n  <form id=\"form\" class=\"topBefore\">\n    \n      <input id=\"opis\" type=\"text\" [(ngModel)]=\"gist.opis\" placeholder=\"Opis\">\n      <input id=\"kategoria\" type=\"text\" [(ngModel)]=\"gist.kategoria\" placeholder=\"Kategoria\">\n      <input id=\"price\" type=\"number\" min=\"0.01\" step=\"0.01\" max=\"5000\" [(ngModel)]=\"gist.price\" placeholder=\"Cena\">\n      <input id=\"data\" type=\"date\" [(ngModel)]=\"gist.data\" placeholder=\"Data\">\n</form>\n <button (click)=\"goBack()\">Cancel</button>\n  <button (click)=\"save()\">Confirm</button>\n\t</div>\n\n\t"
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
     ], GistDetailComponent);

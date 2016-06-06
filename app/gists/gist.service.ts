@@ -7,13 +7,16 @@ import { Gist } from './gist';
 export class GistService {
 	private gistsUrl = '../database/gists';
 	constructor(private http: Http) { }
+
 	getGists(): Promise<Gist[]> {
     return this.http.get(this.gistsUrl).toPromise().then(response => response.json().data).catch(this.handleError);
   }
-	getGist(id: any) {
+
+	getGist(id: number) {
     return this.getGists()
                .then(gists => gists.filter(gist => gist.id === id)[0]);
   }
+
   save(gist: Gist): Promise<Gist>  {
     if (gist.id) {
       return this.put(gist);
@@ -32,6 +35,7 @@ export class GistService {
                .toPromise()
                .catch(this.handleError);
   }
+
   private post(gist: Gist): Promise<Gist> {
     let headers = new Headers({'Content-Type': 'application/json'});
 
@@ -41,6 +45,7 @@ export class GistService {
                .then(res => res.json().data)
                .catch(this.handleError);
   }
+
   private put(gist: Gist) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -53,6 +58,7 @@ export class GistService {
                .then(() => gist)
                .catch(this.handleError);
   }
+
   private handleError(error: any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);

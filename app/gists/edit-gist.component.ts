@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router-deprecated';
 import { Gist } from './gist';
 import { GistDetailComponent } from './gist-detail.component';
 import { GistService } from './gist.service';
@@ -34,43 +35,46 @@ import { AddDetailComponent } from './add-gist.component';
 			</td>
 			<td width="30%">
 				<div *ngIf="addingGist">
-					<add-gist-detail [gist]="selectedGist"></add-gist-detail>
+					  <my-gist-detail (close)="close($event)"></my-gist-detail>
 				</div>
-				<div *ngIf="edittingGist">
-					<my-gist-detail [gist]="selectedGist"></my-gist-detail> 
+				 <div *ngIf="selectedGist">
+ 			  		<form id="form" style="font-size:200%">
+ 				    Kategoria:  {{selectedGist.kategoria}} <br \>
+ 				    Opis:  {{selectedGist.opis}}<br \>
+ 				     <button (click)="gotoDetail()">Edytuj</button>
+ 				  	</form>
 				</div>			
 			</td> 
 		</tr>
 		</table>
 	`,
 
-	directives: [GistDetailComponent, AddDetailComponent]
+	directives: [GistDetailComponent]
 })
 
 export class EditGistComponent implements OnInit {
-	@Input() message: String;
 	gists: Gist[];
 	selectedGist: Gist;
 	addingGist = false;
-	edittingGist = false;
 	error: any;
-	constructor(private GistService: GistService) { }
+
+	constructor(private router: Router, private gistService: GistService) { }
 	getGists() {
-		this.GistService.getGists().then(gists => this.gists = gists);
+		this.gistService.getGists().then(gists => this.gists = gists);
 	}
 	ngOnInit() {
 		this.getGists();
 	}
 	addGist() {
-		this.edittingGist = false;
 	    this.addingGist = true;
-	    this.selectedGist = new Gist();
+	    this.selectedGist = null;
 	}
-	close(message) {
-		this.getGists();
+	close(savedGist: Gist) {
+		this.addingGist = false;
+		if (savedGist) { this.getGists(); }
 	}
 	delete(gist: Gist, event: any) {
-		this.GistService
+		this.gistService
 		    .delete(gist)
 		    .then(res => {
 		      this.gists = this.gists.filter(b => b !== gist);
@@ -81,7 +85,9 @@ export class EditGistComponent implements OnInit {
 	onSelect(gist: Gist) { 
 		this.selectedGist = gist;
 		this.addingGist = false;
-		this.edittingGist = true;
+	}
+	gotoDetail() {
+    	this.router.navigate(['GistDetail', { id: this.selectedGist.id }]);
 	}
 }
 

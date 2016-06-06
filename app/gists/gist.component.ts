@@ -14,7 +14,10 @@ import 'rxjs/Rx';
 	</form>
 	<ul class="gist-list">
 		<li *ngFor="let gist of gists | sortByName:filterValue; let i=index">
-			<a class="gist-list-element"><h2> {{gist.kategoria}},</h2><p> {{gist.opis}}</p> <p>{{gist.price}}.zł</p> <p>{{gist.data}}</p></a>
+			<a class="gist-list-element">
+			<h2> {{gist.kategoria}},</h2>
+			<p> {{gist.opis}}</p> <p>{{gist.price}}.zł</p>
+			 <p>{{gist.data}}</p></a>
 		</li>
 	</ul>
 	<hr>
