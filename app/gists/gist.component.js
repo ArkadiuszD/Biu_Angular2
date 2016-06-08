@@ -26,7 +26,7 @@ var GistComponent = (function () {
     GistComponent = __decorate([
         core_1.Component({
             selector: 'my-gists',
-            template: "\n\t\t<form class=\"searchform cf\">\n\t\t\n\t<input type='text' [(ngModel)]=\"filterValue\"  placeholder=\"Szukaj\">\n\t</form>\n\t<ul class=\"gist-list\">\n\t\t<li *ngFor=\"let gist of gists | sortByName:filterValue; let i=index\">\n\t\t\t<a class=\"gist-list-element\">\n\t\t\t<h2> {{gist.kategoria}},</h2>\n\t\t\t<p> {{gist.opis}}</p> <p>{{gist.price}}.z\u0142</p>\n\t\t\t <p>{{gist.data}}</p></a>\n\t\t</li>\n\t</ul>\n\t<hr>\n\n\t",
+            template: "\n\t\t<form class=\"searchform cf\">\n\t\t\n\t<input type='text' [(ngModel)]=\"filterValue\"  placeholder=\"Szukaj\">\n\t</form>\n\t<ul class=\"gist-list\">\n\t\t<li *ngFor=\"let gist of gists | sortByName:filterValue; let i=index\">\n\t\t\t<a class=\"gist-list-element\"><h2> {{gist.kategoria}},</h2><p> {{gist.opis}}</p> <p>{{gist.price}}.z\u0142</p> <p>{{gist.data}}</p></a>\n\t\t</li>\n\t</ul>\n\t<hr>\n\n\t",
             pipes: [pipe_1.SortByNamePipe]
         }), 
         __metadata('design:paramtypes', [gist_service_1.GistService])

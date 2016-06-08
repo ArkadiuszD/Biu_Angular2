@@ -12,12 +12,9 @@ import { RouteParams } from '@angular/router-deprecated';
     
       <input id="opis" type="text" [(ngModel)]="gist.opis" placeholder="Opis">
       <input id="kategoria" type="text" [(ngModel)]="gist.kategoria" placeholder="Kategoria">
-      <input id="price" type="number" min="0.01" step="10" max="25000" [(ngModel)]="gist.price" placeholder="Cena">
+      <input id="price" type="number" min="0.01" step="0.01" max="5000" [(ngModel)]="gist.price" placeholder="Cena">
       <input id="data" type="date" [(ngModel)]="gist.data" placeholder="Data">
-       <button (click)="goBack()">Anuluj</button>
-       <button (click)="save()">Zapisz</button>
 </form>
-
 	</div>
 
 	`
@@ -30,31 +27,17 @@ export class GistDetailComponent {
   navigated = false;
 
   constructor(
-    private gistService: GistService,
+    private GistService: GistService,
     private routeParams: RouteParams) {
   }
   save() {
-    this.gistService
+    this.GistService
         .save(this.gist)
         .then(gist => {
           this.gist = gist;
-          this.goBack(gist);
+          this.close.emit(null);
         })
         .catch(error => this.error = error);
-  }
-  ngOnInit() {
-    if (this.routeParams.get('id') !== null) {
-      let id = +this.routeParams.get('id');
-      this.navigated = true;
-      this.gistService.getGist(id)
-          .then(gist => this.gist = gist);
-    } else {
-      this.navigated = false;
-      this.gist = new Gist();
-    }
-  }
-  goBack(savedGist: Gist = null) {
-    this.close.emit(savedGist);
-    if (this.navigated) { window.history.back(); }
-  }
+
+}
 }

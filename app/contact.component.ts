@@ -13,7 +13,7 @@ import {FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators} from '@
 
 		Imie i Nazwisko:<br>
 		<input type="text" ngControl="name"><br>
-		<em class="ivalidInfo" *ngIf="!name.valid">Required and start with cap. letter</em><br>
+		<em class="ivalidInfo" *ngIf="!name.valid">Wprowadz imie lub imie i nazwisko</em><br>
 
 		E-mail:<br>
 		<input type="text" ngControl="mail"><br>
@@ -40,7 +40,7 @@ export class ContactComponent {
 		private builder: FormBuilder
 	) {
 		this.name = new Control('', Validators.compose([Validators.required, Validators.pattern('^[A-Za-z]+\.([A-Za-z]\.)?[A-Za-z]+$')]));
-		this.mail = new Control('', Validators.compose([Validators.required);
+		this.mail = new Control('', Validators.compose([Validators.required]));
 		this.comment = new Control('', Validators.compose([Validators.required, Validators.minLength(20)]));
 		this.contactForm = builder.group({
 			name: this.name,
