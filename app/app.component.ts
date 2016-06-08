@@ -5,6 +5,7 @@ import { EditGistComponent } from './gists/edit-gist.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { WelcomePageComponent } from './welcome-page.component';
 import { ContactComponent } from './contact.component';
+import { GistDetailComponent } from './gists/gist-detail.component';
 import 'rxjs/Rx';
 import { HTTP_PROVIDERS } from '@angular/http';
 

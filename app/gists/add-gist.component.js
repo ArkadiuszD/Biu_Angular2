@@ -12,12 +12,20 @@ var core_1 = require('@angular/core');
 var gist_1 = require('./gist');
 var gist_service_1 = require('./gist.service');
 var router_deprecated_1 = require('@angular/router-deprecated');
+var common_1 = require('@angular/common');
 var AddDetailComponent = (function () {
-    function AddDetailComponent(GistService, routeParams) {
+    function AddDetailComponent(GistService, routeParams, builder) {
         this.GistService = GistService;
         this.routeParams = routeParams;
+        this.builder = builder;
         this.close = new core_1.EventEmitter();
         this.navigated = false;
+        this.name = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.pattern('^[A-Za-z]+\.([A-Za-z]\.)?[A-Za-z]+$')]));
+        this.mail = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required]));
+        this.contactForm = builder.group({
+            name: this.name,
+            mail: this.mail
+        });
     }
     AddDetailComponent.prototype.save = function () {
         var _this = this;
@@ -28,6 +36,12 @@ var AddDetailComponent = (function () {
         })
             .catch(function (error) { return _this.error = error; });
         this.close.emit("testujemy");
+    };
+    AddDetailComponent.prototype.Validate = function () {
+        this.Send(this.mail.value, this.name.value);
+    };
+    AddDetailComponent.prototype.Send = function (mail, name) {
+        this.sent = true;
     };
     __decorate([
         core_1.Input(), 
@@ -40,9 +54,9 @@ var AddDetailComponent = (function () {
     AddDetailComponent = __decorate([
         core_1.Component({
             selector: 'add-gist-detail',
-            template: "\n\t<div *ngIf=\"gist\">\n    <div>\n\n        <form #Form=\"ngForm\" id=\"form\" class=\"topBefore\">\n       \n        <input [(ngModel)]=\"gist.opis\" placeholder=\"opis\" required maxlength=\"40\"/><br>\n      \n        <input [(ngModel)]=\"gist.kategoria\"  placeholder=\"kategoria\" required maxlength=\"20\"/><br>\n     \n        <input  [(ngModel)]=\"gist.price\" type=\"number\" min=\"0.01\" step=\"0.01\" max=\"2500\" placeholder=\"price\" required/><br>\n        \n        <input type=\"date\"  [(ngModel)]=\"gist.data\" placeholder=\"Data\" required/><br>\n        <br><button (click)=\"save()\">CONFIRM</button>\n        </form>\n\n\n\n      </div>\n\t</div>\n\n\t"
+            template: "\n     <div *ngIf=\"sent\" id=\"form\" class=\"topBefore\">\n          <h3>Dzi\u0119kujemy wkr\u00F3tce odpowiemy</h3>\n    </div>\n\t<div *ngIf=\"!sent\">\n         <form [ngFormModel]=\"contactForm\" id=\"form\" class=\"topBefore\">\n       \n        <input [(ngModel)]=\"gist.opis\" ngControl=\"name\" placeholder=\"opis\"/><br>\n         <em class=\"ivalidInfo\" *ngIf=\"!name.valid\">Wprowadz imie lub imie i nazwisko</em><br>\n      \n        <input [(ngModel)]=\"gist.kategoria\" ngControl=\"mail\"  placeholder=\"kategoria\"/><br>\n       <em class=\"ivalidInfo\" *ngIf=\"!mail.valid\">Wyprawdz adres</em><br>\n     \n        <input  [(ngModel)]=\"gist.price\" type=\"number\" min=\"0\" step=\"10\" max=\"2500\" placeholder=\"price\" ngControl=\"mail\"/><br>\n        \n        <input type=\"date\"  [(ngModel)]=\"gist.data\" placeholder=\"Data\" required/><br>\n\n        <br><button *ngIf=\"name.valid && mail.valid\" (click)=\"save()\">Dodaj</button>\n        </form>\n\t</div>\n\n\t"
         }), 
-        __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams])
+        __metadata('design:paramtypes', [gist_service_1.GistService, router_deprecated_1.RouteParams, common_1.FormBuilder])
     ], AddDetailComponent);
     return AddDetailComponent;
 }());
